@@ -1,3 +1,6 @@
 ﻿  NeuralLayer.cpp
-  NeuralNetworksV3.vcxproj -> C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.exe
-  NeuralNetworksV3.vcxproj -> C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.pdb (Partial PDB)
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  NeuralNetwork.cpp
+NeuralLayer.obj : error LNK2001: unresolved external symbol "public: static float (__cdecl* NeuralLayer::NeuronActivationFunction)(float)" (?NeuronActivationFunction@NeuralLayer@@2P6AMM@ZA)
+C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.exe : fatal error LNK1120: 1 unresolved externals

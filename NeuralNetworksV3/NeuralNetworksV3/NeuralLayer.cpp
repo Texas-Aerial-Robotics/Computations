@@ -63,7 +63,7 @@ std::vector<float> NeuralLayer::ProcessInputs(std::vector<float> inputs) {
 	}
 
 	// Calculate the output sum for each neuron from weighted inputs and bias.
-	std::vector<float> outputs = std::vector<float>(); outputs.reserve(outputCount);
+	std::vector<float> outputs; outputs.reserve(outputCount);
 	// Add a bias (always-on neuron to inputs)
 	std::vector<float> biasedInputs = inputs; biasedInputs.reserve(neuronCount + 1); // (neuronCount + 1 for the bias neuron.)
 	biasedInputs[biasedInputs.size()] = 1.0f; // The bias neuron is always on (outputs a val. of 1).
@@ -83,6 +83,9 @@ std::vector<float> NeuralLayer::ProcessInputs(std::vector<float> inputs) {
 		for (size_t i = 0; i < outputs.size(); i++) {
 			outputs[i] = (*NeuralLayer::NeuronActivationFunction)(outputs[i]);
 		}
+	}
+	else {
+		throw "No activation function!";
 	}
 
 	return outputs;
@@ -105,7 +108,6 @@ NeuralLayer NeuralLayer::DeepCopy() {
 	// Create the copied NeuralLayer.
 	NeuralLayer newLayer = NeuralLayer(neuronCount, outputCount);
 	newLayer.weights = copiedWeights;
-	newLayer.NeuronActivationFunction = NeuronActivationFunction;
 
 	return newLayer;
 }

@@ -2,18 +2,17 @@
 #include <vector>
 class NeuralLayer
 {
-#pragma region Function Pointers
 public:
+#pragma region Function Pointers
 	/// <summary>
 	/// Delegate representing the activation function of an artificial neuron.
 	/// </summary>
 	/// <param name="input">The input value of the function.</param>
 	/// <returns>The calculated output value of the function.</returns>
-	float(*NeuronActivationFunction)(float input);
+	static float(*NeuronActivationFunction)(float input);
 #pragma endregion
 
 #pragma region Fields
-public:
 	/// <summary>
 	/// The number of neurons in this layer.
 	/// </summary>
