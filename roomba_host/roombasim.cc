@@ -23,7 +23,8 @@ namespace gazebo
     public: void OnUpdate(const common::UpdateInfo & /*_info*/)
     {
       // This will be the roomba behavior
-      this->model->SetLinearVel(math::Vector3(5,0,0));
+      this->model->SetLinearVel(math::Vector3(1,0,0));
+      this->model->SetAngularVel(math::Vector3(1,0,0));
     }
 
     // Pointer to the model

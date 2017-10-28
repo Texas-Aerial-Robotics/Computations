@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/mario/roomba_host/roombamodel.cc
+/home/mario/Computations/roomba_host/roombamodel.cc
 ignition/math/Pose3.hh
 -
 gazebo/physics/physics.hh
-/home/mario/roomba_host/gazebo/physics/physics.hh
+/home/mario/Computations/roomba_host/gazebo/physics/physics.hh
 gazebo/common/common.hh
-/home/mario/roomba_host/gazebo/common/common.hh
+/home/mario/Computations/roomba_host/gazebo/common/common.hh
 gazebo/gazebo.hh
-/home/mario/roomba_host/gazebo/gazebo.hh
+/home/mario/Computations/roomba_host/gazebo/gazebo.hh
 
 /usr/include/gazebo-8/gazebo/Master.hh
 string
