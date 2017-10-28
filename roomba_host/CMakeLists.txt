@@ -10,5 +10,4 @@ target_link_libraries(roombamodel
   ${GAZEBO_LIBRARIES})
 
 add_library(roombasim SHARED roombasim.cc)
-target_link_libraries(roombasim ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES}
-)
+target_link_libraries(roombasim ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})

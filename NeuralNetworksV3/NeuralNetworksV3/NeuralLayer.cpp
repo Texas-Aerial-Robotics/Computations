@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "NeuralLayer.h"
 
+#pragma region Fields
+float(NeuralLayer::*NeuronActivationFunction)(float input) = NULL;
+#pragma endregion
+
 #pragma region Constructors
 /// <summary>
 /// Initializes a new neural layer for a fully connected feedforward neural network with
