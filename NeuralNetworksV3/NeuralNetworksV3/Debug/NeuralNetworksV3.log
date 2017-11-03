@@ -1,3 +1,50 @@
-﻿  Genotype.cpp
-NeuralLayer.obj : error LNK2001: unresolved external symbol "public: static float (__cdecl* NeuralLayer::NeuronActivationFunction)(float)" (?NeuronActivationFunction@NeuralLayer@@2P6AMM@ZA)
-C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.exe : fatal error LNK1120: 1 unresolved externals
+﻿  NeuralLayer.cpp
+  Genotype.cpp
+  GeneticAlgorithm.cpp
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(237): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(237): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(255): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(255): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(274): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(274): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(285): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(285): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(307): error C2062: type 'std::vector<Genotype,std::allocator<_Ty>>' unexpected
+          with
+          [
+              _Ty=Genotype
+          ]
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(307): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(328): error C2062: type 'std::vector<Genotype,std::allocator<_Ty>>' unexpected
+          with
+          [
+              _Ty=Genotype
+          ]
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(328): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(359): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(359): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(372): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(372): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(405): error C2062: type 'void' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(405): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::begin': non-standard syntax; use '&' to create a pointer to member
+          with
+          [
+              _Ty=Genotype
+          ]
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::end': non-standard syntax; use '&' to create a pointer to member
+          with
+          [
+              _Ty=Genotype
+          ]
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C2672: 'std::sort': no matching overloaded function found
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C2780: 'void std::sort(_RanIt,_RanIt)': expects 2 arguments - 3 provided
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\algorithm(2926): note: see declaration of 'std::sort'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C2065: 'TerminationCriteria': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C2065: 'null': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C3861: 'TerminationCriteria': identifier not found
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(42): error C3861: 'Terminate': identifier not found
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(47): error C3861: 'CreateNewPopulation': identifier not found
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  NeuralNetwork.cpp
