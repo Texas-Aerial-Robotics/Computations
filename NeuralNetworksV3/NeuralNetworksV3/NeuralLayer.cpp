@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "MathHelper.h"
 #include "NeuralLayer.h"
 
 #pragma region Fields
@@ -124,12 +125,9 @@ NeuralLayer NeuralLayer::DeepCopy() {
 void NeuralLayer::SetRandomWeights(float minValue, float maxValue) {
 	// Loop through all the weights of this neural layer,
 	// and give them random vals. b/w minValue and maxValue.
-	float normalizedRand; // A normalized, random float (b/w 0 and 1).
-	float range = maxValue - minValue; // The range b/w minValue and maxValue.
 	for (size_t i = 0; i < weights.size(); i++) {
 		for (size_t j = 0; j < weights[i].size(); j++) {
-			normalizedRand = ((float)rand()) / (float(RAND_MAX));
-			weights[i][j] = minValue + normalizedRand * range;
+			weights[i][j] = MathHelper::RandomRange(minValue, maxValue);
 		}
 	}
 }

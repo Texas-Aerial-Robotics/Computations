@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="GeneticAlgorithm.h" />
     <ClInclude Include="Genotype.h" />
+    <ClInclude Include="MathHelper.h" />
     <ClInclude Include="NeuralLayer.h" />
     <ClInclude Include="NeuralNetwork.h" />
     <ClInclude Include="stdafx.h" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="GeneticAlgorithm.cpp" />
     <ClCompile Include="Genotype.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="NeuralLayer.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="NeuralNetworksV3.cpp" />

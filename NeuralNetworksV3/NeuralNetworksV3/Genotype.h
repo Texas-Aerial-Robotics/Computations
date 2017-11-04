@@ -50,6 +50,11 @@ public:
 	Genotype(std::vector<float> _parameters);
 
 	~Genotype();
+
+	/// <summary>
+	/// Just a default constructor. Isn't used for anything except for raw Genotype declarations.
+	/// </summary>
+	Genotype();
 #pragma endregion
 
 #pragma region Methods

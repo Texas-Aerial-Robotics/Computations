@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// The default probability of a parameter being swapped during crossover.
 	/// </summary>
-	static const float defCrossSwapProb = 0.6f;
+	static const float defCrossSwapProb;
 
 	/// <summary>
 	/// The default probability of a parameter being mutated.
@@ -88,7 +88,7 @@ public:
 	/// </summary>
 	/// <param name="intermediatePopulation">The intermediate population.</param>
 	/// <returns>The new population.</returns>
-	std::vector<Genotype> (*RecombinationOperator)(std::vector<Genotype> intermediatePopulation, int newPopulationSize) = NULL;
+	std::vector<Genotype> (*RecombinationOperator)(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize) = NULL;
 
 	/// <summary>
 	/// Function pointer used to mutate a new population.
@@ -231,7 +231,7 @@ public:
 	/// <summary>
 	/// Gives offspring genotypes parameters from their respective parent genotypes, swapping the parents from which offspring get parameters based on swapChance.
 	/// </summary>
-	static void CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, out Genotype offspring1, out Genotype offspring2);
+	static void CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype& offspring1, Genotype& offspring2);
 #pragma endregion
 
 #pragma region Mutation Operators
