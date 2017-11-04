@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "MathHelper.h"
 #include "Genotype.h"
 
 #pragma region Constructors
@@ -10,9 +11,8 @@ Genotype::Genotype(std::vector<float> _parameters) {
 	//genotypeIndex = currentGenotypeIndex++;
 }
 
-Genotype::~Genotype()
-{
-}
+Genotype::~Genotype() {}
+Genotype::Genotype() {}
 #pragma endregion
 
 #pragma region Methods
@@ -36,14 +36,10 @@ void Genotype::SetRandomParameters(float minValue, float maxValue) {
 		throw std::invalid_argument("The minimum value may not exceed the maximum value.");
 	}
 
-	float normalizedRand; // A normalized, random float (b/w 0 and 1).
-	float range = maxValue - minValue; // The range b/w minValue and maxValue.
-
-									   // Generate a random parameter vector by looping through each parameter,
-									   // giving them random values b/w minValue and maxValue.
+	// Generate a random parameter vector by looping through each parameter,
+	// giving them random values b/w minValue and maxValue.
 	for (int i = 0; i < ((int) parameters.size()); i++) {
-		normalizedRand = ((float)rand()) / (float(RAND_MAX));
-		parameters[i] = minValue + normalizedRand * range;
+		parameters[i] = MathHelper::RandomRange(minValue, maxValue);
 	}
 }
 

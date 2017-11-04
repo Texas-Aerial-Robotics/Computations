@@ -1,50 +1,22 @@
-﻿  NeuralLayer.cpp
-  Genotype.cpp
-  GeneticAlgorithm.cpp
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(237): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(237): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(255): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(255): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(274): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(274): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(285): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(285): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(307): error C2062: type 'std::vector<Genotype,std::allocator<_Ty>>' unexpected
+﻿  GeneticAlgorithm.cpp
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\mathhelper.h(9): warning C4091: 'static ': ignored on left of 'MathHelper' when no variable is declared
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::begin': non-standard syntax; use '&' to create a pointer to member
           with
           [
               _Ty=Genotype
           ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(307): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(328): error C2062: type 'std::vector<Genotype,std::allocator<_Ty>>' unexpected
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::end': non-standard syntax; use '&' to create a pointer to member
           with
           [
               _Ty=Genotype
           ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(328): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(359): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(359): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(372): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(372): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(405): error C2062: type 'void' unexpected
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(405): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::begin': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Ty=Genotype
-          ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Ty=Genotype
-          ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C2672: 'std::sort': no matching overloaded function found
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(21): error C2780: 'void std::sort(_RanIt,_RanIt)': expects 2 arguments - 3 provided
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C2672: 'std::sort': no matching overloaded function found
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C2780: 'void std::sort(_RanIt,_RanIt)': expects 2 arguments - 3 provided
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\algorithm(2926): note: see declaration of 'std::sort'
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C2065: 'TerminationCriteria': undeclared identifier
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C2065: 'null': undeclared identifier
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(41): error C3861: 'TerminationCriteria': identifier not found
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(42): error C3861: 'Terminate': identifier not found
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(47): error C3861: 'CreateNewPopulation': identifier not found
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  NeuralNetwork.cpp
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(160): error C2511: 'std::vector<Genotype,std::allocator<_Ty>> GeneticAlgorithm::DefaultRecombinationOperator(std::vector<_Ty,std::allocator<_Ty>>,unsigned int)': overloaded member function not found in 'GeneticAlgorithm'
+          with
+          [
+              _Ty=Genotype
+          ]
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(7): note: see declaration of 'GeneticAlgorithm'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(194): warning C4018: '<': signed/unsigned mismatch

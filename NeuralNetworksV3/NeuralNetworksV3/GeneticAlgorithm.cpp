@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "GeneticAlgorithm.h"
 #include <algorithm> // for std::sort
 #include <functional> // for std::greater
-
+#include "MathHelper.h"
+#include "GeneticAlgorithm.h"
 
 #pragma region Fields
 #pragma region Default Parameters
@@ -10,7 +10,7 @@ const float GeneticAlgorithm::defInitParamMin = -1.0f;
 
 const float GeneticAlgorithm::defInitParamMax = 1.0f;
 
-const float defCrossSwapProb = 0.6f;
+const float GeneticAlgorithm::defCrossSwapProb = 0.6f;
 
 const float GeneticAlgorithm::defMutationProb = .3f;
 
@@ -105,7 +105,7 @@ void GeneticAlgorithm::Terminate() {
 #pragma region Default Operators
 	void GeneticAlgorithm::DefaultPopulationInitialization(std::vector<Genotype> population) {
 		// Set parameters to random values in a set range.
-		for (int i = 0; i < population.size(); i++) {
+		for (size_t i = 0; i < population.size(); i++) {
 			population[i].SetRandomParameters(defInitParamMin, defInitParamMax);
 		}
 	}
@@ -118,7 +118,7 @@ void GeneticAlgorithm::Terminate() {
 		// First calculate the average evaluation of the whole population.
 		int currentPopulationSize = 0;
 		float totalEvaluation = 0;
-		for (int i = 0; i < currentPopulation.size(); i++) {
+		for (size_t i = 0; i < currentPopulation.size(); i++) {
 			totalEvaluation += currentPopulation[i].evaluation;
 			currentPopulationSize++;
 		}
@@ -126,7 +126,7 @@ void GeneticAlgorithm::Terminate() {
 		float averageEvaluation = totalEvaluation / currentPopulationSize;
 
 		// Assign fitnesses with the formula: fitness = evaluation / averageEvaluation.
-		for (int i = 0; i < currentPopulation.size(); i++) {
+		for (size_t i = 0; i < currentPopulation.size(); i++) {
 			currentPopulation[i].fitness = currentPopulation[i].evaluation / averageEvaluation;
 		}
 	}
@@ -157,28 +157,30 @@ void GeneticAlgorithm::Terminate() {
 	/// <returns>A new population.</returns>
 	/// <param name="intermediatePopulation">The intermediate population that was created from the selection process.</param>
 	/// <param name="newPopulationSize">The size of the new population.</param>
-	std::vector<Genotype> GeneticAlgorithm::DefaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
+	std::vector<Genotype> GeneticAlgorithm::DefaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize) {
 		// Check arguments.
-		if (intermediatePopulation.Count < 2)
-			throw new ArgumentException("The intermediate population size must be at least 2 for this operator.");
+		if (intermediatePopulation.size() < 2)
+			throw new std::invalid_argument("The intermediate population size must be at least 2 for this operator.");
 
 		if (newPopulationSize < 2)
-			throw new ArgumentException("The new population size must be at least 2 for this operator.");
+			throw new std::invalid_argument("The new population size must be at least 2 for this operator.");
 
-		std::vector<Genotype> newPopulation = new std::vector<Genotype>();
+		std::vector<Genotype> newPopulation; newPopulation.reserve(newPopulationSize);
 
-		newPopulation.Add(intermediatePopulation[0]);
-		newPopulation.Add(intermediatePopulation[1]);
+		// Add first 2 genotypes of intermediatePopulation to newPopulation.
+		newPopulation[newPopulation.size()] = intermediatePopulation[0];
+		newPopulation[newPopulation.size()] = intermediatePopulation[1];
 
 		// Add new Genotypes to the population until there are newPopulationSize Genotypes in the population.
-		while (newPopulation.Count < newPopulationSize) {
-			Genotype offspring1, offspring2;
-			CompleteCrossover(intermediatePopulation[0], intermediatePopulation[1], defCrossSwapProb, out offspring1, out offspring2);
+		while (newPopulation.size() < newPopulationSize) {
+			Genotype offspring1 = Genotype();
+			Genotype offspring2 = Genotype();
+			CompleteCrossover(intermediatePopulation[0], intermediatePopulation[1], defCrossSwapProb, offspring1, offspring2);
 
-			newPopulation.Add(offspring1);
+			newPopulation[newPopulation.size()] = offspring1;
 			// Don't add another Genotype to the population if there isn't room for another Genotype.
-			if (newPopulation.Count < newPopulationSize)
-				newPopulation.Add(offspring2);
+			if (newPopulation.size() < newPopulationSize)
+				newPopulation[newPopulation.size()] = offspring2;
 		}
 
 		return newPopulation;
@@ -189,10 +191,11 @@ void GeneticAlgorithm::Terminate() {
 	/// </summary>
 	/// <param name="newPopulation">A new, mutated population.</param>
 	void GeneticAlgorithm::DefaultMutationOperator(std::vector<Genotype> newPopulation) {
-		for (int i = 0; i < newPopulation.size(); i++) (Genotype genotype in newPopulation) {
+		for (unsigned int i = 0; i < newPopulation.size(); i++) {
 			// Mutate approximately defMutationPerc of genotypes in the population.
-			if (UnityEngine.Random.Range(0f, 1f) < defMutationProp)
+			if (MathHelper::RandomRange(0.f, 1.f) < defMutationProp) {
 				newPopulation[i] = MutateGenotype(newPopulation[i], defMutationProb, defMutationAmount);
+			}
 		}
 	}
 #pragma endregion
@@ -201,7 +204,7 @@ void GeneticAlgorithm::Terminate() {
 	/// <summary>
 	/// Gives offspring genotypes parameters from their respective parent genotypes, swapping the parents from which offspring get parameters based on swapChance.
 	/// </summary>
-	void GeneticAlgorithm::CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, out Genotype offspring1, out Genotype offspring2) {
+	void GeneticAlgorithm::CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype& offspring1, Genotype& offspring2) {
 		// Initialize new parameter vectors.
 		int parameterCount = parent1.GetParameterCount();
 
@@ -211,29 +214,29 @@ void GeneticAlgorithm::Terminate() {
 
 		// Iterate over all of the parents' parameters, giving parameters from parents to their respective offspring.
 		for (int i = 0; i < parameterCount; i++) {
-			if (MathHelper.Random.Range(0f, 1f) < swapChance) {
+			if (MathHelper::RandomRange(0.f, 1.f) < swapChance) {
 				// Swap parent-to-offspring parameters.
-				off1Parameters[i] = parent2[i];
-				off2Parameters[i] = parent1[i];
+				off1Parameters[i] = parent2.GetParameter(i);
+				off2Parameters[i] = parent1.GetParameter(i);
 			}
 			else {
 				// Don't swap parent-to-offspring parameters.
-				off1Parameters[i] = parent1[i];
-				off2Parameters[i] = parent2[i];
+				off1Parameters[i] = parent1.GetParameter(i);
+				off2Parameters[i] = parent2.GetParameter(i);
 			}
 		}
 
-		offspring1 = new Genotype(off1Parameters);
-		offspring2 = new Genotype(off2Parameters);
+		offspring1 = Genotype(off1Parameters);
+		offspring2 = Genotype(off2Parameters);
 	}
 #pragma endregion
 
 #pragma region Mutation Operators
 	static Genotype MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount) {
 		for (int i = 0; i < genotype.GetParameterCount(); i++) {
-			if (MathHelper.RandomRange(0f, 1f) < mutationProb) {
+			if (MathHelper::RandomRange(0.f, 1.f) < mutationProb) {
 				// Mutate by a random amount in the range [-mutationAmount, mutationAmount].
-				genotype.SetParameter(i, (genotype.GetParameter(i) + MathHelper.RandomRange(-1f, 1f) * mutationAmount));
+				genotype.SetParameter(i, (genotype.GetParameter(i) + MathHelper::RandomRange(-1.f, 1.f) * mutationAmount));
 			}
 		}
 	}
