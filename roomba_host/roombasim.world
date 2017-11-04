@@ -199,6 +199,7 @@
           <izz>0.001000</izz>
         </inertia>
         <mass>0.010000</mass>
+	
       </inertial>
       <collision name="collision">
         <pose>0 0 0 0 1.570700 1.570700</pose>
@@ -279,6 +280,7 @@
       <axis>
         <xyz>0 1 0</xyz>
         <use_parent_model_frame>true</use_parent_model_frame>
+	
       </axis>
     </joint>
     <joint name="right_wheel" type="revolute">
