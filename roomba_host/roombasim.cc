@@ -23,8 +23,9 @@ namespace gazebo
     public: void OnUpdate(const common::UpdateInfo & /*_info*/)
     {
       // This will be the roomba behavior
-	this->model->GetJoint("left_wheel")->SetParam("fmax",0,1000.0);
-	this->model->GetJoint("left_wheel")->SetParam("vel",0,50.0);
+	this->model->GetJoint("left_wheel")->SetParam("fmax",0,100.0);
+	this->model->GetJoint("left_wheel")->SetParam("vel",0,20.0);
+	
     }
 
     // Pointer to the model
