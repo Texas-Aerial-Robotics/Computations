@@ -1,5 +1,17 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
+
+<world name ="default">
+
+		<include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+<population name="roomba1_population1">
   <model name="roomba1">
     <link name="base">
       <inertial>
@@ -280,5 +292,64 @@
     </joint>
   </model>
 
+<!-- population stuff -->
+<pose>0 0 0 0 0 0</pose>
+      <cylinder>
+        <radius>4</radius>
+	<length>1E-4</length>
+      </cylinder>
 
+  <distribution>
+    <type>grid</type>
+	<rows>2</rows>
+	<cols>2</cols>
+	<step>4 4 0</step>
+  </distribution>
+</population>
+
+<!-- random velocity stuff-->
+<plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>left_wheel</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
+
+
+<plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>right_wheel</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
+
+
+		<plugin name="roombatest" filename="libroombtest.so"/>
+  </world>
 </sdf>

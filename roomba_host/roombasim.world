@@ -233,6 +233,28 @@
         </geometry>
       </visual>
     </link>
+
+<!-- random velocity stuff-->
+<plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>left_wheel</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>10 10 10</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>10</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
+
     <link name="right_wheel">
       <pose>0 -0.130000 0.032000 0 0 0</pose>
       <inertial>
@@ -294,7 +316,7 @@
       </axis>
     </joint>
 	<plugin name="roombasim" filename="libroombasim.so"/> 
- 	 	</model>
+</model>
 
 <!-- population stuff -->
 <pose>0 0 0 0 0 0</pose>
@@ -302,10 +324,14 @@
         <radius>4</radius>
 	<length>1E-4</length>
       </cylinder>
-<model_count>20</model_count>
+
   <distribution>
-    <type>uniform</type>
-     </distribution>
+    <type>grid</type>
+	<rows>2</rows>
+	<cols>2</cols>
+	<step>4 4 0</step>
+  </distribution>
 		</population>
+
   </world>
 </sdf>
