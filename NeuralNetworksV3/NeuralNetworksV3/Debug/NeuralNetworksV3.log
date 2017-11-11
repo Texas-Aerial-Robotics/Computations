@@ -1,22 +1,9 @@
-﻿  GeneticAlgorithm.cpp
+﻿  NeuralLayer.cpp
 c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\mathhelper.h(9): warning C4091: 'static ': ignored on left of 'MathHelper' when no variable is declared
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::begin': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Ty=Genotype
-          ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C3867: 'std::vector<Genotype,std::allocator<_Ty>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Ty=Genotype
-          ]
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C2672: 'std::sort': no matching overloaded function found
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(46): error C2780: 'void std::sort(_RanIt,_RanIt)': expects 2 arguments - 3 provided
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\algorithm(2926): note: see declaration of 'std::sort'
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(160): error C2511: 'std::vector<Genotype,std::allocator<_Ty>> GeneticAlgorithm::DefaultRecombinationOperator(std::vector<_Ty,std::allocator<_Ty>>,unsigned int)': overloaded member function not found in 'GeneticAlgorithm'
-          with
-          [
-              _Ty=Genotype
-          ]
-  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.h(7): note: see declaration of 'GeneticAlgorithm'
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(194): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  MathHelper.cpp
+  Genotype.cpp
+  GeneticAlgorithm.cpp
+  NeuralNetworksV3.vcxproj -> C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.exe
+  NeuralNetworksV3.vcxproj -> C:\Users\Peter\source\repos\NeuralNetworksV3\Debug\NeuralNetworksV3.pdb (Partial PDB)

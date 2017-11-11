@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneticAlgorithm.h" />
+    <ClInclude Include="GeneticsManager.h" />
     <ClInclude Include="Genotype.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="NeuralLayer.h" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneticAlgorithm.cpp" />
+    <ClCompile Include="GeneticsManager.cpp" />
     <ClCompile Include="Genotype.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="NeuralLayer.cpp" />

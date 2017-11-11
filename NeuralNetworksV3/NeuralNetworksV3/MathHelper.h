@@ -5,6 +5,6 @@ public:
 	/// <summary>
 	/// Returns a random value in the range b/w minValue and maxValue.
 	/// </summary>
-	float RandomRange(float minValue, float maxValue);
+	static float RandomRange(float minValue, float maxValue);
 };
 

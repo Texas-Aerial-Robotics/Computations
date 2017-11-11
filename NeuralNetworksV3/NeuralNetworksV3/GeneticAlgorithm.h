@@ -217,7 +217,7 @@ public:
 	/// <returns>A new population.</returns>
 	/// <param name="intermediatePopulation">The intermediate population that was created from the selection process.</param>
 	/// <param name="newPopulationSize">The size of the new population.</param>
-	static std::vector<Genotype> DefaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, int newPopulationSize);
+	static std::vector<Genotype> DefaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize);
 
 	/// <summary>
 	/// Simply mutates each genotype with the default mutation probability and amount.
@@ -242,7 +242,7 @@ public:
 	/// <param name="genotype">The genotype to be mutated.</param>
 	/// <param name="mutationProb">The probability of a parameter being mutated.</param>
 	/// <param name="mutationAmount">A parameter may be mutated by an amount in the range [-mutationAmount, mutationAmount].</param>
-	static Genotype MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
+	static void MutateGenotype(Genotype &genotype, float mutationProb, float mutationAmount);
 #pragma endregion
 #pragma endregion
 #pragma endregion

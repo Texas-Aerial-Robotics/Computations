@@ -41,9 +41,16 @@ void GeneticAlgorithm::EvaluationFinished() {
 	// Calcuate a fitness from a recently-ended evaluation.
 	FitnessCalculationMethod(currentPopulation);
 
+	struct greater
+	{
+		bool operator()(Genotype const &a, Genotype const &b) const { return a.evaluation > b.evaluation; }
+	};
+
 	// Sort the population if sortPopulation is true.
-	if (sortPopulation)
-		std::sort(currentPopulation.begin, currentPopulation.end, std::greater<int>())();
+	if (sortPopulation) {
+		//std::sort(currentPopulation.begin, currentPopulation.end, std::greater<int>())();
+		std::sort(currentPopulation.begin(), currentPopulation.end(), greater());
+	}
 
 	/*
 	// Create a string that debugs information about the last evaluation.
@@ -194,7 +201,7 @@ void GeneticAlgorithm::Terminate() {
 		for (unsigned int i = 0; i < newPopulation.size(); i++) {
 			// Mutate approximately defMutationPerc of genotypes in the population.
 			if (MathHelper::RandomRange(0.f, 1.f) < defMutationProp) {
-				newPopulation[i] = MutateGenotype(newPopulation[i], defMutationProb, defMutationAmount);
+				MutateGenotype(newPopulation[i], defMutationProb, defMutationAmount);
 			}
 		}
 	}
@@ -232,13 +239,15 @@ void GeneticAlgorithm::Terminate() {
 #pragma endregion
 
 #pragma region Mutation Operators
-	static Genotype MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount) {
+	void GeneticAlgorithm::MutateGenotype(Genotype &genotype, float mutationProb, float mutationAmount) {
 		for (int i = 0; i < genotype.GetParameterCount(); i++) {
 			if (MathHelper::RandomRange(0.f, 1.f) < mutationProb) {
 				// Mutate by a random amount in the range [-mutationAmount, mutationAmount].
 				genotype.SetParameter(i, (genotype.GetParameter(i) + MathHelper::RandomRange(-1.f, 1.f) * mutationAmount));
 			}
 		}
+
+
 	}
 #pragma endregion
 #pragma endregion

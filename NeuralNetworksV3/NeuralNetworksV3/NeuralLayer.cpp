@@ -3,7 +3,7 @@
 #include "NeuralLayer.h"
 
 #pragma region Fields
-float(NeuralLayer::*NeuronActivationFunction)(float input) = NULL;
+const float(*NeuralLayer::NeuronActivationFunction)(float input) = NULL;
 #pragma endregion
 
 #pragma region Constructors

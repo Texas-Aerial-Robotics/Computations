@@ -9,7 +9,7 @@ public:
 	/// </summary>
 	/// <param name="input">The input value of the function.</param>
 	/// <returns>The calculated output value of the function.</returns>
-	static float(*NeuronActivationFunction)(float input);
+	static const float(*NeuronActivationFunction)(float input);
 #pragma endregion
 
 #pragma region Fields
