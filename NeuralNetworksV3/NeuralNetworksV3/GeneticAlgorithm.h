@@ -1,5 +1,6 @@
 #pragma once
 #include "Genotype.h"
+#include "GeneticsManager.h"
 #include <vector>
 
 //TODO: Add the MathHelper class. Add a RandomRange (min, max) function to the MathHelper class.
@@ -69,12 +70,12 @@ public:
 	/// Function pointer used to evaluate (or start the evaluation process of) the current population.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param>
-	void (*Evaluation)(std::vector<Genotype> currentPopulation) = NULL;
+	void (GeneticsManager::*Evaluation)(std::vector<Genotype> currentPopulation) = nullptr;
 
 	/// <summary>
 	/// Function pointer used to calculate the fitness value of each genotype of the current population.
 	/// </summary>
-	void (*FitnessCalculationMethod)(std::vector<Genotype> currentPopulation) = NULL;
+	void (*FitnessCalculationMethod)(std::vector<Genotype> currentPopulation) = nullptr;
 
 	/// <summary>
 	/// Function pointer used to select genotypes of the current population and create an intermediate population.

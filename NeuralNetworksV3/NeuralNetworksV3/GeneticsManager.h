@@ -4,6 +4,7 @@
 #include "NeuralNetwork.h"
 #include <vector>
 #include <math.h> // For std math functions
+#include "MathHelper.h" // custom math functions
 
 /// <summary>
 /// Singleton class for managing the adaptation process.
@@ -15,6 +16,11 @@ public:
 	/// The one and only GeneticsManager instance.
 	/// </summary>
 	static GeneticsManager instance;
+
+	/// <summary>
+	/// Whether the GeneticsManager instance has been created.
+	/// </summary>
+	static bool instanceCreated;
 
 private:
 	// Whether or not the results of each generation shall be written to a file; to be set in some UI.
@@ -58,7 +64,7 @@ private:
 	/// <summary>
 	/// An enum describing different adaptation modes.
 	/// </summary>
-	enum SelectionMode { FitnessProportionate, Elitist, RemainderStochastic };
+	enum SelectionMode { FitnessProportionate, Elitist };
 
 	/// <summary>
 	/// The adaptation mode to be used in a simulation; to be set in some UI.
@@ -115,16 +121,7 @@ public:
 
 #pragma region Constructors
 public:
-	void Awake() {
-		// If instance (a static variable in the GeneticsManager class) is already set,
-		// then there must be another GeneticsManager in the scene, which is bad b/c GeneticsManager
-		// has a Singleton design.
-		if (instance != NULL) {
-			throw std::invalid_argument("There is more than one GeneticsManager in the Scene.");
-			return;
-		}
-		instance = *this;
-	}
+	void Awake();
 
 	~GeneticsManager();
 #pragma endregion
@@ -135,79 +132,9 @@ public:
 	/// <summary>
 	/// Starts the adaptation process.
 	/// </summary>
-	void StartAdaptation() {
-		// Create a neural network to get a parameter count.
-		NeuralNetwork nn = NeuralNetwork(fnnTopology);
+	void StartAdaptation();
 
-		// Set up the Genetic Algorithm.
-		geneticAlgorithm = GeneticAlgorithm(nn.weightCount, populationSize);
-		genotypesSaved = 0;
-
-		geneticAlgorithm.Evaluation = SetUpPopulationEvaluation;
-
-		// Change the recombination mode of the simulation based on whether asexualRecombination is true.
-		if (asexualRecombinationMode) {
-			geneticAlgorithm.RecombinationOperator = AsexualRecombination;
-		}
-		else {
-			geneticAlgorithm.RecombinationOperator = RandomRecombination;
-		}
-
-		// MutateAllButBestTwo is the only viable genetic mutation operator for now.
-		geneticAlgorithm.MutationOperator = MutateAllButBestTwo;
-
-		// Change the selection mode of the simulation based on a given SelectionMode.
-		switch (selectionMode) {
-		case SelectionMode::FitnessProportionate:
-			geneticAlgorithm.SelectionOperator = FitnessProportionateSelection;
-			geneticAlgorithm.FitnessCalculationMethod = StandardDeviationFitnessCalculation;
-			break;
-		case SelectionMode::Elitist:
-			geneticAlgorithm.SelectionOperator = GeneticAlgorithm::DefaultSelectionOperator;
-			geneticAlgorithm.FitnessCalculationMethod = StandardDeviationFitnessCalculation;
-
-			// Elitist recombination uses the default recombination operator instead of RandomRecombination.
-			if (!asexualRecombinationMode) {
-				geneticAlgorithm.RecombinationOperator = GeneticAlgorithm::DefaultRecombinationOperator;
-			}
-			break;
-		// TODO: Maybe add remainder stochastic sampling. It probably won't be helpful, though.
-			/*case SelectionMode::RemainderStochastic:
-			geneticAlgorithm.SelectionOperator = RemainderStochasticSampling;
-			geneticAlgorithm.FitnessCalculationMethod = ;
-			break;*/
-		}
-
-		// Subscribe the genetic algorithm's EvaluationFinished() method to the AllAgentsDied event.
-		// (So EvaluationFinished() gets called when the AllAgentsDied event is fired.)
-		AllAgentsDied += geneticAlgorithm.EvaluationFinished;
-
-		// TODO: Statistics! (And Saving/Loading genotypes.)
-		/*if (saveStatistics) {
-			statisticsFileName = "Last Simulation Statistics";//"Evaluation - " + DateTime.Now.ToString ("yyyy_MM_dd_HH-mm-ss");
-			WriteStatisticsFileStart();
-			// Subscribe the WriteStatisticsToFile() method to geneticAlgorithm's FitnessCalculationFinished event.
-			geneticAlgorithm.FitnessCalculationFinished += WriteStatisticsToFile;
-
-			// Loading/saving genotypes.
-			geneticAlgorithm.GenotypeLoadingMethod += LoadGenotypesIntoPopulation;
-			geneticAlgorithm.GenotypeSavingMethod += SaveGenotypes;
-		}*/
-
-		// Restart logic
-		if (restartAfter > 0) {
-			geneticAlgorithm.CheckTerminationCriteria = CheckGenerationTermination;
-			geneticAlgorithm.AlgorithmTerminated = OnGATermination;
-		}
-
-		// TODO: Make a relevant class to link Gazebo simulations w/ NNs.
-		// Set the maximum allowed evaluation time for Helicopters.
-		//Helicopter.SetMaxEvaluationTime(maxEvaluationTime);
-
-		geneticAlgorithm.Start();
-	}
-
-	#pragma region Helper Methods
+#pragma region Helper Methods
 	// TODO: Reading/writing for NNs.
 	/*
 	/// <summary>
@@ -279,97 +206,41 @@ private:
 	/// Checks whether the termination criterion of generation count was met.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param>
-	bool CheckGenerationTermination(std::vector<Genotype> currentPopulation) {
-		return geneticAlgorithm.generationCount >= restartAfter;
-	}
+	bool CheckGenerationTermination(std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Called when a given genetic algorithm has been terminated.
 	/// </summary>
 	/// <param name="ga">A genetic algorithm.</param>
-	void OnGATermination(GeneticAlgorithm ga) {
-		// Unsubscribe the EvaluationFinished() method from the AllAgentsDied event.
-		AllAgentsDied -= ga.EvaluationFinished;
-
-		RestartAlgorithm(5.0f);
-	}
+	void OnGATermination(GeneticAlgorithm ga);
 
 	/// <summary>
 	/// Restarts the genetic algorithm Singleton after a given wait time.
 	/// </summary>
 	/// <param name="waitTime">The wait time in seconds.</param>
-	void RestartAlgorithm(float waitTime) {
-		Invoke("StartAdaptation", waitTime);
-	}
+	void RestartAlgorithm(float waitTime);
 
 	/// <summary>
 	/// Sets up an evaluation of the current population by creating new agents from the current
 	/// population and then starting a new evaluation with the GameStateManager's Singleton instance.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param>
-	void SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation) {
-		// Create new agents from currentPopulation.
-		agents.Clear();
-		agentsDiedCount = 0;
-
-		for (unsigned int i = 0; i < currentPopulation.size(); i++) {//foreach(Genotype genotype in currentPopulation) {
-			//agents.Add(new Agent(genotype, MathHelper.SoftSignFunction, fnnTopology));
-			agents[i] = Agent(genotype, MathHelper.SoftSignFunction, fnnTopology);
-		}
-
-		for (unsigned int i = 0; i < agents.size(); i++) {
-			agents[i].AgentDied = OnAgentDied;
-		}
-
-		GameStateManager::instance.QueueForEvaluation(agents);
-	}
+	void SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Callback for when an agent has died.
 	/// </summary>
 	/// <param name="agent">A given agent.</param>
-	void OnAgentDied(Agent agent) {
-		agentsDiedCount++;
-
-		// Call AllAgentsDied if all agents have died, and AllAgentsDied points to a method.
-		if (agentsDiedCount == populationSize && AllAgentsDied != null) {
-			AllAgentsDied();
-		}
-	}
-#pragma endregion General
+	void OnAgentDied(Agent agent);
+#pragma endregion
 #pragma endregion
 
 #pragma region GA Operators
-private:
 	/// <summary>
 	/// A selection operator for a genetic algorithm that selects fitter genotypes more often than less-fit genotypes.
 	/// </summary>
 	/// <param name="currentPopulation">A sorted population of evaluated genotypes.</param>
-	std::vector<Genotype> FitnessProportionateSelection(std::vector<Genotype> currentPopulation) {
-		std::vector<Genotype> intermediatePopulation; intermediatePopulation.reserve(currentPopulation.size());
-
-		// Current index in intermediatePopulation
-		unsigned int intermediatePopulationIndex = 0;
-
-		// Save the best 2 genotypes.
-		intermediatePopulation[intermediatePopulationIndex++] = currentPopulation[0];
-		intermediatePopulation[intermediatePopulationIndex++] = currentPopulation[1];
-
-		// Get the min and max fitnesses in the population.
-		// (Assume that currentPopulation is sorted in fitness-descending order.)
-		float minFitness = currentPopulation[currentPopulation.size() - 1].fitness;
-		float maxFitness = currentPopulation[0].fitness;
-
-		// Select genotypes based on their fitnesses.
-		float selectionChance;
-		for (unsigned int i = 0; i < currentPopulation.size(); i++) { //foreach(Genotype genotype in currentPopulation) {
-			selectionChance = std::pow(MathHelper.InverseLerp(minFitness, maxFitness, currentPopulation[i].fitness), fitnessProportionateAdaptationPower); // Raise fitnesses to a power to give mediocre genotypes to make selection more/less elitist.
-			if (MathHelper.RandomRange(0.f, 1.f) <= selectionChance)
-				intermediatePopulation[intermediatePopulationIndex++] = currentPopulation[i];
-		}
-
-		return intermediatePopulation;
-	}
+	std::vector<Genotype> FitnessProportionateSelection(std::vector<Genotype> currentPopulation);
 
 	/*
 	/// <summary>
@@ -418,44 +289,7 @@ private:
 	/// <returns>A new, un-mutated population.</returns>
 	/// <param name="intermediatePopulation">The intermediate population.</param>
 	/// <param name="newPopulationSize">The size of the new population.</param>
-	std::vector<Genotype> RandomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
-		// Check arguments.
-		if (intermediatePopulation.size() < 2)
-			throw std::invalid_argument("The intermediate population has to be at least of size 2 for this operator");
-
-		if (newPopulationSize < 2)
-			throw std::invalid_argument("The new population size must be at least 2 for this operator.");
-
-		// Current index of the new population
-		unsigned int newPopIndex = 0;
-
-		std::vector<Genotype> newPopulation; newPopulation.reserve(newPopulationSize);
-		// Always add the best two (unmodified) genotypes to newPopulation.
-		newPopulation[newPopIndex++] = intermediatePopulation[0];
-		newPopulation[newPopIndex++] = intermediatePopulation[1];
-
-		// Add new genotypes to the new population until there are newPopulationSize genotypes in the new population.
-		while (newPopulation.size() < newPopulationSize) {
-			// Get two random indices that are not the same.
-			int randomIndex1 = (int)MathHelper.RandomRange(0.f, (float)intermediatePopulation.size());
-			int randomIndex2 = (int)MathHelper.RandomRange(0.f, (float)intermediatePopulation.size());
-			while (randomIndex1 == randomIndex2) {
-				randomIndex2 = (int)MathHelper.RandomRange(0.f, (float)intermediatePopulation.size());
-			}
-
-			Genotype offspring1, offspring2;
-			GeneticAlgorithm::CompleteCrossover(intermediatePopulation[randomIndex1], intermediatePopulation[randomIndex2],
-				GeneticAlgorithm::defCrossSwapProb, offspring1, offspring2);
-
-			newPopulation[newPopIndex++] = offspring1;
-			// Add both offspring unless there's no room in newPopulation for offspring2.
-			if (newPopulation.size() < newPopulationSize) {
-				newPopulation[newPopIndex++] = offspring2;
-			}
-		}
-
-		return newPopulation;
-	}
+	std::vector<Genotype> RandomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize);
 
 	/// <summary>
 	/// A recombination operator for a genetic algorithm; asexually selects random genotypes of a given population.
@@ -463,100 +297,25 @@ private:
 	/// <returns>A new, un-mutated population.</returns>
 	/// <param name="intermediatePopulation">The intermediate population.</param>
 	/// <param name="newPopulationSize">The size of the new population.</param>
-	std::vector<Genotype> AsexualRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
-		// Check arguments.
-		if (newPopulationSize < 2)
-			throw std::invalid_argument("The new population size must be at least 2 for this operator.");
-
-		// Current index of the new population
-		unsigned int newPopIndex = 0;
-
-		std::vector<Genotype> newPopulation; newPopulation.reserve(newPopulationSize);
-		// Always add the best two (unmodified) genotypes to newPopulation.
-		newPopulation[newPopIndex++] = intermediatePopulation[0];
-		newPopulation[newPopIndex++] = intermediatePopulation[1];
-
-		// Add new genotypes to the new population until there are newPopulationSize genotypes in the new population.
-		while (newPopulation.size() < newPopulationSize) {
-			// Get two random indices that are not the same.
-			int randomIndex1 = MathHelper.RandomRange(0, intermediatePopulation.size());
-			int randomIndex2 = MathHelper.RandomRange(0, intermediatePopulation.size());
-			while (randomIndex1 == randomIndex2) {
-				randomIndex2 = MathHelper.RandomRange(0, intermediatePopulation.size());
-			}
-
-			// Select 2 genotypes, and COPY them (don't just add them to the new population).
-			newPopulation[newPopIndex++] = Genotype(intermediatePopulation[randomIndex1].GetParameterCopy());
-			// Add both of the selected genotypes unless there's no room in newPopulation for the 2nd genotype.
-			if (newPopulation.size() < newPopulationSize) {
-				newPopulation[newPopIndex++] = Genotype(intermediatePopulation[randomIndex2].GetParameterCopy());
-			}
-		}
-
-		return newPopulation;
-	}
+	std::vector<Genotype> AsexualRecombination(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize);
 
 	/// <summary>
 	/// Mutates all members of a new population with the default probability, while leaving the first to genotypes in the list unchanged.
 	/// </summary>
 	/// <param name="newPopulation">The new population.</param>
-	void MutateAllButBestTwo(std::vector<Genotype> newPopulation) {
-		for (int i = 2; i < newPopulation.size(); i++) {
-			if (MathHelper.RandomRange(0.f, 1.f) < GeneticAlgorithm::defMutationProp) {
-				GeneticAlgorithm::MutateGenotype(newPopulation[i], GeneticAlgorithm::defMutationProb, GeneticAlgorithm::defMutationAmount);
-			}
-		}
-	}
+	void MutateAllButBestTwo(std::vector<Genotype> newPopulation);
 
 	/// <summary>
 	/// Mutates all the members of a new population with parameters.
 	/// </summary>
 	/// <param name="newPopulation">The new population.</param>
-	void MutateAll(std::vector<Genotype> newPopulation) {
-		for (unsigned int i = 0; i < newPopulation.size(); i++) {//foreach(Genotype genotype in newPopulation) {
-			if (MathHelper.RandomRange(0.f, 1.f) < GeneticAlgorithm::defMutationProp) {
-				GeneticAlgorithm::MutateGenotype(newPopulation[i], GeneticAlgorithm::defMutationProb, GeneticAlgorithm::defMutationAmount);
-			}
-		}
-	}
+	void MutateAll(std::vector<Genotype> newPopulation);
 
 	/// <summary>
 	/// Calculates the fitness of each genotype in a population, measured as a genotype's z-score.
 	/// </summary>
 	/// <param name="population">A given population of genotypes.</param>
-	void StandardDeviationFitnessCalculation(std::vector<Genotype> population) {
-		// Get the sample mean evaluation.
-		int currentPopulationSize = 0;
-		float sampleMeanEval = 0.f;
-		for (unsigned int i = 0; i < population.size(); i++) {//foreach(Genotype genotype in population) {
-			Genotype genotype = population[i];
-			sampleMeanEval += genotype.evaluation;
-
-			// TODO: Add basic text output.
-			if (genotype.evaluation == 0)
-				Debug.Log("Problem!");
-
-			currentPopulationSize++;
-		}
-
-		sampleMeanEval /= currentPopulationSize;
-
-		// Get the standard deviation of the sample.
-		float standardDev = 0;
-		for (unsigned int i = 0; i < population.size(); i++) { //foreach(Genotype genotype in population) {
-			Genotype genotype = population[i];
-			standardDev += std::pow((genotype.fitness - sampleMeanEval), 2);
-		}
-
-		standardDev = std::sqrt(standardDev / (currentPopulationSize - 1));
-
-		// Assign fitnesses (measured in standard deviations from the population mean) to the genotypes.
-		// (This is a z-score!)
-		for (unsigned int i = 0; i < population.size(); i++) { //foreach(Genotype genotype in population) {
-			Genotype genotype = population[i];
-			genotype.fitness = (genotype.evaluation - sampleMeanEval) / standardDev;
-		}
-	}
+	void StandardDeviationFitnessCalculation(std::vector<Genotype> population);
 #pragma endregion
 
 #pragma region Get Methods
