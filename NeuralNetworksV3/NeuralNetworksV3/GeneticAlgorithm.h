@@ -70,7 +70,7 @@ public:
 	/// Function pointer used to evaluate (or start the evaluation process of) the current population.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param>
-	void (GeneticsManager::*Evaluation)(std::vector<Genotype> currentPopulation) = nullptr;
+	void (*Evaluation)(std::vector<Genotype> currentPopulation) = nullptr;
 
 	/// <summary>
 	/// Function pointer used to calculate the fitness value of each genotype of the current population.
@@ -82,7 +82,7 @@ public:
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param> 
 	/// <returns>The intermediate population.</returns>
-	std::vector<Genotype> (*SelectionOperator)(std::vector<Genotype> currentPopulation) = NULL;
+	std::vector<Genotype> (*SelectionOperator)(std::vector<Genotype> currentPopulation) = nullptr;
 
 	/// <summary>
 	/// Function pointer used to recombine a intermediate population to generate a new population.
@@ -99,7 +99,7 @@ public:
 	/// <summary>
 	/// Function pointer used to check whether any termination criterion has been met.
 	/// </summary>
-	bool (*CheckTerminationCriteria)(std::vector<Genotype> currentPopulation) = NULL;
+	bool (*CheckTerminationCriteria)(std::vector<Genotype> currentPopulation) = nullptr;
 	#pragma endregion
 
 #pragma region General
