@@ -12,7 +12,7 @@
     </include>
 
 <!-- roombas -->
-<population name="roomba1_population1">
+<!-- <population name="roomba1_population1"> -->
     <model name="roomba1">
     <link name="base">
       <inertial>
@@ -294,10 +294,10 @@
         <use_parent_model_frame>true</use_parent_model_frame>
       </axis>
     </joint>
-	<plugin name="roombasim" filename="libroombasim.so"/> 
+	<plugin name="roombacircle" filename="libroombacircle.so"/> 
 </model>
 
-<!-- population stuff -->
+<!-- population stuff 
 <pose>0 0 0 0 0 0</pose>
       <cylinder>
         <radius>4</radius>
@@ -311,6 +311,6 @@
 	<step>4 4 0</step>
   </distribution>
 		</population>
-
+-->
   </world>
 </sdf>

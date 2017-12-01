@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/mario/Computations/roomba_host/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named roombamodel
+
+# Build rule for target.
+roombamodel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombamodel
+.PHONY : roombamodel
+
+# fast build rule for target.
+roombamodel/fast:
+	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/build
+.PHONY : roombamodel/fast
+
+#=============================================================================
 # Target rules for targets named roombasim
 
 # Build rule for target.
@@ -124,17 +137,44 @@ roombasim/fast:
 .PHONY : roombasim/fast
 
 #=============================================================================
-# Target rules for targets named roombamodel
+# Target rules for targets named roombacircle
 
 # Build rule for target.
-roombamodel: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roombamodel
-.PHONY : roombamodel
+roombacircle: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombacircle
+.PHONY : roombacircle
 
 # fast build rule for target.
-roombamodel/fast:
-	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/build
-.PHONY : roombamodel/fast
+roombacircle/fast:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/build
+.PHONY : roombacircle/fast
+
+roombacircle.o: roombacircle.cc.o
+
+.PHONY : roombacircle.o
+
+# target to build an object file
+roombacircle.cc.o:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.o
+.PHONY : roombacircle.cc.o
+
+roombacircle.i: roombacircle.cc.i
+
+.PHONY : roombacircle.i
+
+# target to preprocess a source file
+roombacircle.cc.i:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.i
+.PHONY : roombacircle.cc.i
+
+roombacircle.s: roombacircle.cc.s
+
+.PHONY : roombacircle.s
+
+# target to generate assembly for a file
+roombacircle.cc.s:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.s
+.PHONY : roombacircle.cc.s
 
 roombamodel.o: roombamodel.cc.o
 
@@ -196,10 +236,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... roombasim"
 	@echo "... roombamodel"
+	@echo "... roombasim"
+	@echo "... roombacircle"
+	@echo "... rebuild_cache"
+	@echo "... roombacircle.o"
+	@echo "... roombacircle.i"
+	@echo "... roombacircle.s"
 	@echo "... roombamodel.o"
 	@echo "... roombamodel.i"
 	@echo "... roombamodel.s"
