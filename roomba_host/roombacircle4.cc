@@ -6,7 +6,7 @@
 
 namespace gazebo
 {
-  class RoombaCircle : public ModelPlugin
+  class RoombaCircle4 : public ModelPlugin
   {
   	public: void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
   	{
@@ -26,27 +26,27 @@ namespace gazebo
 		// this needs to be modeled correctly	
   		//set starting location of roombah
   		key = anim->CreateKeyFrame(0);
-        	key->Translation(ignition::math::Vector3d(-1, -1, 0));
+        	key->Translation(ignition::math::Vector3d(1, -1, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
         	
         	// set waypoint location after 2 seconds
         	key = anim->CreateKeyFrame(2.0);
-        	key->Translation(ignition::math::Vector3d(-1, 1, 0));
+        	key->Translation(ignition::math::Vector3d(-1, -1, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
         	
         	key = anim->CreateKeyFrame(4.0);
-        	key->Translation(ignition::math::Vector3d(1,1, 0));
+        	key->Translation(ignition::math::Vector3d(-1,1, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
 
 
         	key = anim->CreateKeyFrame(6.0);
-        	key->Translation(ignition::math::Vector3d(1, -1, 0));
+        	key->Translation(ignition::math::Vector3d(1, 1, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
 
 		//set final location equal to starting location
 
         	key = anim->CreateKeyFrame(8.0);
-        	key->Translation(ignition::math::Vector3d(-1,-1, 0));
+        	key->Translation(ignition::math::Vector3d(1,-1, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
         	
         	
@@ -63,6 +63,6 @@ namespace gazebo
   };
   
   // Register this plugin with the simulator
-  GZ_REGISTER_MODEL_PLUGIN(RoombaCircle)
+  GZ_REGISTER_MODEL_PLUGIN(RoombaCircle4)
 }
   
