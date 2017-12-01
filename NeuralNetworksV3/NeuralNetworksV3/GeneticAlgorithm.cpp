@@ -21,6 +21,10 @@ const float GeneticAlgorithm::defMutationProp = 1.0f;
 #pragma endregion
 
 #pragma region Methods
+#pragma region Operator Functions
+#pragma endregion
+
+#pragma General
 GeneticAlgorithm::GeneticAlgorithm()
 {
 }
@@ -31,7 +35,7 @@ void GeneticAlgorithm::Start() {
 	InitializePopulation(currentPopulation);
 
 	// Load Genotypes into the current population if GenotypeLoadingMethod is not null.
-	if (GenotypeLoadingMethod != NULL)
+	if (GenotypeLoadingMethod != nullptr)
 		GenotypeLoadingMethod(currentPopulation);
 
 	Evaluation(currentPopulation);
@@ -107,10 +111,11 @@ void GeneticAlgorithm::Terminate() {
 		AlgorithmTerminated(*this);
 	}
 }
+#pragma endregion
 
 #pragma region Static Methods
 #pragma region Default Operators
-	void GeneticAlgorithm::DefaultPopulationInitialization(std::vector<Genotype> population) {
+	void GeneticAlgorithm::InitializePopulation(std::vector<Genotype> population) {
 		// Set parameters to random values in a set range.
 		for (size_t i = 0; i < population.size(); i++) {
 			population[i].SetRandomParameters(defInitParamMin, defInitParamMax);

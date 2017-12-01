@@ -6,7 +6,7 @@
 //TODO: Add the MathHelper class. Add a RandomRange (min, max) function to the MathHelper class.
 class GeneticAlgorithm
 {
-
+	GeneticsManager gm; // GeneticsManager associated w/ this GeneticAlgorithm
 	// TODO: Make sure that genotypes are sorted in ascending order by using std::sort (vector.start, vector.end, std::greater<int>()).
 	// (Don't just use std::sort(vector.start, vector.end)
 public:
@@ -48,23 +48,23 @@ public:
 	#pragma endregion
 
 // TODO: Wire the correct methods to the below function pointers.
-#pragma region Operator Function Pointers
+#pragma region Operator Functions
 	/// <summary>
 	/// Function pointer used to initialize the initial population.
 	/// </summary>
 	/// <param name="initialPopulation">The population to be initialized.</param> 
-	void (*InitializePopulation)(std::vector<Genotype> initialPopulation) = NULL;
+	void InitializePopulation (std::vector<Genotype> initialPopulation);
 
 	/// <summary>
 	/// Function pointer used to load genotypes into the initial population.
 	/// </summary>
 	/// <param name="initialPopulation">The population to load genotypes into.</param>
-	void (*GenotypeLoadingMethod)(std::vector<Genotype> initialPopulation) = NULL;
+	void GenotypeLoadingMethod (std::vector<Genotype> initialPopulation);
 
 	/// <summary>
 	/// Function pointer used to save genotypes found in a final population.
 	/// </summary>
-	void (*GenotypeSavingMethod)(std::vector<Genotype> finalPopulation) = NULL;
+	void (GenotypeSavingMethod)(std::vector<Genotype> finalPopulation);
 
 	/// <summary>
 	/// Function pointer used to evaluate (or start the evaluation process of) the current population.
