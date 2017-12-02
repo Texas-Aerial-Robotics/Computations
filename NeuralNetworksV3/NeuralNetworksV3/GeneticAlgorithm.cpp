@@ -22,6 +22,7 @@ const float GeneticAlgorithm::defMutationProp = 1.0f;
 
 #pragma region Methods
 #pragma region Operator Functions
+
 #pragma endregion
 
 #pragma General
@@ -39,6 +40,40 @@ void GeneticAlgorithm::Start() {
 		GenotypeLoadingMethod(currentPopulation);
 
 	Evaluation(currentPopulation);
+}
+
+#pragma region Operator Methods
+void GeneticAlgorithm::FitnessCalculationMethod (std::vector<Genotype> population) {
+	DefaultFitnessCalculation(population);
+}
+
+std::vector<Genotype> GeneticAlgorithm::SelectionOperator(std::vector<Genotype> population) {
+	return DefaultSelectionOperator(population);
+}
+
+std::vector<Genotype> GeneticAlgorithm::RecombinationOperator(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize)
+{
+	return DefaultRecombinationOperator(intermediatePopulation, newPopulationSize);
+}
+
+void GeneticAlgorithm::MutationOperator(std::vector<Genotype> newPopulation)
+{
+	DefaultMutationOperator(newPopulation);
+}
+#pragma endregion
+
+bool GeneticAlgorithm::CheckTerminationCriteria(std::vector<Genotype> currentPopulation)
+{
+	return GeneticsManager::instance.CheckGenerationTermination (currentPopulation);
+}
+
+void GeneticAlgorithm::AlgorithmTerminated(GeneticAlgorithm ga)
+{
+	GeneticsManager::instance.OnGATermination (*this);
+}
+
+void GeneticAlgorithm::Evaluation(std::vector<Genotype> currentPopulation) {
+	GeneticsManager::instance.SetUpPopulationEvaluation(currentPopulation);
 }
 
 void GeneticAlgorithm::EvaluationFinished() {
@@ -106,10 +141,8 @@ void GeneticAlgorithm::Terminate() {
 	if (GenotypeSavingMethod != NULL)
 		GenotypeSavingMethod(currentPopulation);
 
-	// Call AlgorithmTerminated if it's not null.
-	if (AlgorithmTerminated != NULL) {
-		AlgorithmTerminated(*this);
-	}
+	// Call AlgorithmTerminated
+	AlgorithmTerminated(*this);
 }
 #pragma endregion
 

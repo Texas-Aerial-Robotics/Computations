@@ -104,7 +104,7 @@ public:
 	/// An event for when all agents have died.
 	/// </summary>
 	//public event System.Action AllAgentsDied;
-	void(*AllAgentsDied)();
+	void AllAgentsDied ();
 
 private:
 	// The GeneticAlgorithm being used with this GeneticsManager.
@@ -133,6 +133,13 @@ public:
 	/// Starts the adaptation process.
 	/// </summary>
 	void StartAdaptation();
+
+	/// <summary>
+	/// Sets up an evaluation of the current population by creating new agents from the current
+	/// population and then starting a new evaluation with the GameStateManager's Singleton instance.
+	/// </summary>
+	/// <param name="currentPopulation">The current population.</param>
+	void SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation);
 
 #pragma region Helper Methods
 	// TODO: Reading/writing for NNs.
@@ -201,7 +208,6 @@ public:
 		}
 	}*/
 
-private:
 	/// <summary>
 	/// Checks whether the termination criterion of generation count was met.
 	/// </summary>
@@ -214,18 +220,12 @@ private:
 	/// <param name="ga">A genetic algorithm.</param>
 	void OnGATermination(GeneticAlgorithm ga);
 
+private:
 	/// <summary>
 	/// Restarts the genetic algorithm Singleton after a given wait time.
 	/// </summary>
 	/// <param name="waitTime">The wait time in seconds.</param>
 	void RestartAlgorithm(float waitTime);
-
-	/// <summary>
-	/// Sets up an evaluation of the current population by creating new agents from the current
-	/// population and then starting a new evaluation with the GameStateManager's Singleton instance.
-	/// </summary>
-	/// <param name="currentPopulation">The current population.</param>
-	void SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Callback for when an agent has died.

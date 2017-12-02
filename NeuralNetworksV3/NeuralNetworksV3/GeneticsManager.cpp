@@ -43,7 +43,7 @@ void GeneticsManager::StartAdaptation() {
 	geneticAlgorithm.MutationOperator = MutateAllButBestTwo;
 
 	// Change the selection mode of the simulation based on a given SelectionMode.
-	switch (selectionMode) {
+	/*switch (selectionMode) {
 	case SelectionMode::FitnessProportionate:
 		geneticAlgorithm.SelectionOperator = FitnessProportionateSelection;
 		geneticAlgorithm.FitnessCalculationMethod = StandardDeviationFitnessCalculation;
@@ -57,11 +57,12 @@ void GeneticsManager::StartAdaptation() {
 			geneticAlgorithm.RecombinationOperator = GeneticAlgorithm::DefaultRecombinationOperator;
 		}
 		break;
-	}
+	}*/
 
 	// Subscribe the genetic algorithm's EvaluationFinished() method to the AllAgentsDied event.
 	// (So EvaluationFinished() gets called when the AllAgentsDied event is fired.)
-	AllAgentsDied += geneticAlgorithm.EvaluationFinished;
+	
+	//AllAgentsDied += geneticAlgorithm.EvaluationFinished;
 
 	// TODO: Statistics! (And Saving/Loading genotypes.)
 	/*if (saveStatistics) {
@@ -86,6 +87,10 @@ void GeneticsManager::StartAdaptation() {
 	//Helicopter.SetMaxEvaluationTime(maxEvaluationTime);
 
 	geneticAlgorithm.Start();
+}
+
+void GeneticsManager::AllAgentsDied() {
+	geneticAlgorithm.EvaluationFinished();
 }
 
 #pragma region Helper Methods
@@ -169,7 +174,7 @@ bool GeneticsManager::CheckGenerationTermination(std::vector<Genotype> currentPo
 /// <param name="ga">A genetic algorithm.</param>
 void GeneticsManager::OnGATermination(GeneticAlgorithm ga) {
 	// Unsubscribe the EvaluationFinished() method from the AllAgentsDied event.
-	AllAgentsDied -= ga.EvaluationFinished;
+	//AllAgentsDied -= ga.EvaluationFinished;
 
 	RestartAlgorithm(5.0f);
 }
@@ -403,11 +408,11 @@ void GeneticsManager::MutateAll(std::vector<Genotype> newPopulation) {
 /// Calculates the fitness of each genotype in a population, measured as a genotype's z-score.
 /// </summary>
 /// <param name="population">A given population of genotypes.</param>
-void GeneticsManager::StandardDeviationFitnessCalculation(std::vector<Genotype> population) {
+void GeneticsManager::StandardDeviationFitnessCalculation (std::vector<Genotype> population) {
 	// Get the sample mean evaluation.
 	int currentPopulationSize = 0;
 	float sampleMeanEval = 0.f;
-	for (unsigned int i = 0; i < population.size(); i++) {//foreach(Genotype genotype in population) {
+	for (unsigned int i = 0; i < population.size(); i++) {
 		Genotype genotype = population[i];
 		sampleMeanEval += genotype.evaluation;
 

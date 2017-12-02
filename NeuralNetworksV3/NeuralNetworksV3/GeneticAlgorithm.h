@@ -70,36 +70,36 @@ public:
 	/// Function pointer used to evaluate (or start the evaluation process of) the current population.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param>
-	void (*Evaluation)(std::vector<Genotype> currentPopulation) = nullptr;
+	void Evaluation (std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Function pointer used to calculate the fitness value of each genotype of the current population.
 	/// </summary>
-	void (*FitnessCalculationMethod)(std::vector<Genotype> currentPopulation) = nullptr;
+	void FitnessCalculationMethod (std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Function pointer used to select genotypes of the current population and create an intermediate population.
 	/// </summary>
 	/// <param name="currentPopulation">The current population.</param> 
 	/// <returns>The intermediate population.</returns>
-	std::vector<Genotype> (*SelectionOperator)(std::vector<Genotype> currentPopulation) = nullptr;
+	std::vector<Genotype> SelectionOperator (std::vector<Genotype> currentPopulation);
 
 	/// <summary>
 	/// Function pointer used to recombine a intermediate population to generate a new population.
 	/// </summary>
 	/// <param name="intermediatePopulation">The intermediate population.</param>
 	/// <returns>The new population.</returns>
-	std::vector<Genotype> (*RecombinationOperator)(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize) = NULL;
+	std::vector<Genotype> RecombinationOperator (std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize);
 
 	/// <summary>
 	/// Function pointer used to mutate a new population.
 	/// </summary>
-	void (*MutationOperator)(std::vector<Genotype> newPopulation) = NULL;
+	void MutationOperator(std::vector<Genotype> newPopulation);
 
 	/// <summary>
 	/// Function pointer used to check whether any termination criterion has been met.
 	/// </summary>
-	bool (*CheckTerminationCriteria)(std::vector<Genotype> currentPopulation) = nullptr;
+	bool CheckTerminationCriteria (std::vector<Genotype> currentPopulation);
 	#pragma endregion
 
 #pragma region General
@@ -133,13 +133,13 @@ public:
 	/// <summary>
 	/// Event for when this algorithm is eventually terminated.
 	/// </summary>
-	void (*AlgorithmTerminated)(GeneticAlgorithm ga) = NULL;
+	void AlgorithmTerminated (GeneticAlgorithm ga);
 
 	/// <summary>
 	/// Event for when this algorithm has finished a fitness calculation. The given parameter
 	/// is the current population sorted by fitness, if sorting is enabled (see <see cref="SortPopulation"/>).
 	/// </summary>
-	void (*FitnessCalculationFinished)(std::vector<Genotype> genotypes) = NULL;
+	void FitnessCalculationFinished (std::vector<Genotype> genotypes);
 #pragma endregion
 #pragma endregion
 
