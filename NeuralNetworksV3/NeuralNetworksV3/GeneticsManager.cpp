@@ -199,12 +199,12 @@ void GeneticsManager::SetUpPopulationEvaluation(std::vector<Genotype> currentPop
 
 	for (unsigned int i = 0; i < currentPopulation.size(); i++) {//foreach(Genotype genotype in currentPopulation) {
 																	//agents.Add(new Agent(genotype, MathHelper.SoftSignFunction, fnnTopology));
-		agents[i] = Agent(genotype, MathHelper::SoftSignFunction, fnnTopology);
+		agents[i] = Agent (currentPopulation[i], fnnTopology);
 	}
 
-	for (unsigned int i = 0; i < agents.size(); i++) {
+	/*for (unsigned int i = 0; i < agents.size(); i++) {
 		agents[i].AgentDied = OnAgentDied;
-	}
+	}*/
 
 	GameStateManager::instance.QueueForEvaluation(agents);
 }

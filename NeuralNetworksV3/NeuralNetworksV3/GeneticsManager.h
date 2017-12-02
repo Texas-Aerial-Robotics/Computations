@@ -134,6 +134,8 @@ public:
 	/// </summary>
 	void StartAdaptation();
 
+#pragma region Helper Methods
+public:
 	/// <summary>
 	/// Sets up an evaluation of the current population by creating new agents from the current
 	/// population and then starting a new evaluation with the GameStateManager's Singleton instance.
@@ -141,7 +143,6 @@ public:
 	/// <param name="currentPopulation">The current population.</param>
 	void SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation);
 
-#pragma region Helper Methods
 	// TODO: Reading/writing for NNs.
 	/*
 	/// <summary>
@@ -220,18 +221,18 @@ public:
 	/// <param name="ga">A genetic algorithm.</param>
 	void OnGATermination(GeneticAlgorithm ga);
 
+	/// <summary>
+	/// Callback for when an agent has died.
+	/// </summary>
+	/// <param name="agent">A given agent.</param>
+	void OnAgentDied(Agent agent);
+
 private:
 	/// <summary>
 	/// Restarts the genetic algorithm Singleton after a given wait time.
 	/// </summary>
 	/// <param name="waitTime">The wait time in seconds.</param>
 	void RestartAlgorithm(float waitTime);
-
-	/// <summary>
-	/// Callback for when an agent has died.
-	/// </summary>
-	/// <param name="agent">A given agent.</param>
-	void OnAgentDied(Agent agent);
 #pragma endregion
 #pragma endregion
 
