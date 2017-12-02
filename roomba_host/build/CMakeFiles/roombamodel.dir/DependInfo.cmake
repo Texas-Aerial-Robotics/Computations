@@ -19,7 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/gazebo-8"
   "/usr/include/bullet"
   "/usr/include/simbody"
-  "/usr/include/sdformat-5.2"
+  "/usr/include/sdformat-5.3"
   "/usr/include/ignition/math3"
   "/usr/include/OGRE"
   "/usr/include/OGRE/Terrain"

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/mario/Computations/roomba_host/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,84 +111,164 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named roombasim
+# Target rules for targets named roombacircle
 
 # Build rule for target.
-roombasim: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roombasim
-.PHONY : roombasim
+roombacircle: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombacircle
+.PHONY : roombacircle
 
 # fast build rule for target.
-roombasim/fast:
-	$(MAKE) -f CMakeFiles/roombasim.dir/build.make CMakeFiles/roombasim.dir/build
-.PHONY : roombasim/fast
+roombacircle/fast:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/build
+.PHONY : roombacircle/fast
 
 #=============================================================================
-# Target rules for targets named roombamodel
+# Target rules for targets named roombacircle2
 
 # Build rule for target.
-roombamodel: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roombamodel
-.PHONY : roombamodel
+roombacircle2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombacircle2
+.PHONY : roombacircle2
 
 # fast build rule for target.
-roombamodel/fast:
-	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/build
-.PHONY : roombamodel/fast
+roombacircle2/fast:
+	$(MAKE) -f CMakeFiles/roombacircle2.dir/build.make CMakeFiles/roombacircle2.dir/build
+.PHONY : roombacircle2/fast
 
-roombamodel.o: roombamodel.cc.o
+#=============================================================================
+# Target rules for targets named roombacircle3
 
-.PHONY : roombamodel.o
+# Build rule for target.
+roombacircle3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombacircle3
+.PHONY : roombacircle3
+
+# fast build rule for target.
+roombacircle3/fast:
+	$(MAKE) -f CMakeFiles/roombacircle3.dir/build.make CMakeFiles/roombacircle3.dir/build
+.PHONY : roombacircle3/fast
+
+#=============================================================================
+# Target rules for targets named roombacircle4
+
+# Build rule for target.
+roombacircle4: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roombacircle4
+.PHONY : roombacircle4
+
+# fast build rule for target.
+roombacircle4/fast:
+	$(MAKE) -f CMakeFiles/roombacircle4.dir/build.make CMakeFiles/roombacircle4.dir/build
+.PHONY : roombacircle4/fast
+
+roombacircle.o: roombacircle.cc.o
+
+.PHONY : roombacircle.o
 
 # target to build an object file
-roombamodel.cc.o:
-	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/roombamodel.cc.o
-.PHONY : roombamodel.cc.o
+roombacircle.cc.o:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.o
+.PHONY : roombacircle.cc.o
 
-roombamodel.i: roombamodel.cc.i
+roombacircle.i: roombacircle.cc.i
 
-.PHONY : roombamodel.i
+.PHONY : roombacircle.i
 
 # target to preprocess a source file
-roombamodel.cc.i:
-	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/roombamodel.cc.i
-.PHONY : roombamodel.cc.i
+roombacircle.cc.i:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.i
+.PHONY : roombacircle.cc.i
 
-roombamodel.s: roombamodel.cc.s
+roombacircle.s: roombacircle.cc.s
 
-.PHONY : roombamodel.s
+.PHONY : roombacircle.s
 
 # target to generate assembly for a file
-roombamodel.cc.s:
-	$(MAKE) -f CMakeFiles/roombamodel.dir/build.make CMakeFiles/roombamodel.dir/roombamodel.cc.s
-.PHONY : roombamodel.cc.s
+roombacircle.cc.s:
+	$(MAKE) -f CMakeFiles/roombacircle.dir/build.make CMakeFiles/roombacircle.dir/roombacircle.cc.s
+.PHONY : roombacircle.cc.s
 
-roombasim.o: roombasim.cc.o
+roombacircle2.o: roombacircle2.cc.o
 
-.PHONY : roombasim.o
+.PHONY : roombacircle2.o
 
 # target to build an object file
-roombasim.cc.o:
-	$(MAKE) -f CMakeFiles/roombasim.dir/build.make CMakeFiles/roombasim.dir/roombasim.cc.o
-.PHONY : roombasim.cc.o
+roombacircle2.cc.o:
+	$(MAKE) -f CMakeFiles/roombacircle2.dir/build.make CMakeFiles/roombacircle2.dir/roombacircle2.cc.o
+.PHONY : roombacircle2.cc.o
 
-roombasim.i: roombasim.cc.i
+roombacircle2.i: roombacircle2.cc.i
 
-.PHONY : roombasim.i
+.PHONY : roombacircle2.i
 
 # target to preprocess a source file
-roombasim.cc.i:
-	$(MAKE) -f CMakeFiles/roombasim.dir/build.make CMakeFiles/roombasim.dir/roombasim.cc.i
-.PHONY : roombasim.cc.i
+roombacircle2.cc.i:
+	$(MAKE) -f CMakeFiles/roombacircle2.dir/build.make CMakeFiles/roombacircle2.dir/roombacircle2.cc.i
+.PHONY : roombacircle2.cc.i
 
-roombasim.s: roombasim.cc.s
+roombacircle2.s: roombacircle2.cc.s
 
-.PHONY : roombasim.s
+.PHONY : roombacircle2.s
 
 # target to generate assembly for a file
-roombasim.cc.s:
-	$(MAKE) -f CMakeFiles/roombasim.dir/build.make CMakeFiles/roombasim.dir/roombasim.cc.s
-.PHONY : roombasim.cc.s
+roombacircle2.cc.s:
+	$(MAKE) -f CMakeFiles/roombacircle2.dir/build.make CMakeFiles/roombacircle2.dir/roombacircle2.cc.s
+.PHONY : roombacircle2.cc.s
+
+roombacircle3.o: roombacircle3.cc.o
+
+.PHONY : roombacircle3.o
+
+# target to build an object file
+roombacircle3.cc.o:
+	$(MAKE) -f CMakeFiles/roombacircle3.dir/build.make CMakeFiles/roombacircle3.dir/roombacircle3.cc.o
+.PHONY : roombacircle3.cc.o
+
+roombacircle3.i: roombacircle3.cc.i
+
+.PHONY : roombacircle3.i
+
+# target to preprocess a source file
+roombacircle3.cc.i:
+	$(MAKE) -f CMakeFiles/roombacircle3.dir/build.make CMakeFiles/roombacircle3.dir/roombacircle3.cc.i
+.PHONY : roombacircle3.cc.i
+
+roombacircle3.s: roombacircle3.cc.s
+
+.PHONY : roombacircle3.s
+
+# target to generate assembly for a file
+roombacircle3.cc.s:
+	$(MAKE) -f CMakeFiles/roombacircle3.dir/build.make CMakeFiles/roombacircle3.dir/roombacircle3.cc.s
+.PHONY : roombacircle3.cc.s
+
+roombacircle4.o: roombacircle4.cc.o
+
+.PHONY : roombacircle4.o
+
+# target to build an object file
+roombacircle4.cc.o:
+	$(MAKE) -f CMakeFiles/roombacircle4.dir/build.make CMakeFiles/roombacircle4.dir/roombacircle4.cc.o
+.PHONY : roombacircle4.cc.o
+
+roombacircle4.i: roombacircle4.cc.i
+
+.PHONY : roombacircle4.i
+
+# target to preprocess a source file
+roombacircle4.cc.i:
+	$(MAKE) -f CMakeFiles/roombacircle4.dir/build.make CMakeFiles/roombacircle4.dir/roombacircle4.cc.i
+.PHONY : roombacircle4.cc.i
+
+roombacircle4.s: roombacircle4.cc.s
+
+.PHONY : roombacircle4.s
+
+# target to generate assembly for a file
+roombacircle4.cc.s:
+	$(MAKE) -f CMakeFiles/roombacircle4.dir/build.make CMakeFiles/roombacircle4.dir/roombacircle4.cc.s
+.PHONY : roombacircle4.cc.s
 
 # Help Target
 help:
@@ -196,16 +276,24 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... roombasim"
-	@echo "... roombamodel"
-	@echo "... roombamodel.o"
-	@echo "... roombamodel.i"
-	@echo "... roombamodel.s"
-	@echo "... roombasim.o"
-	@echo "... roombasim.i"
-	@echo "... roombasim.s"
+	@echo "... rebuild_cache"
+	@echo "... roombacircle"
+	@echo "... roombacircle2"
+	@echo "... roombacircle3"
+	@echo "... roombacircle4"
+	@echo "... roombacircle.o"
+	@echo "... roombacircle.i"
+	@echo "... roombacircle.s"
+	@echo "... roombacircle2.o"
+	@echo "... roombacircle2.i"
+	@echo "... roombacircle2.s"
+	@echo "... roombacircle3.o"
+	@echo "... roombacircle3.i"
+	@echo "... roombacircle3.s"
+	@echo "... roombacircle4.o"
+	@echo "... roombacircle4.i"
+	@echo "... roombacircle4.s"
 .PHONY : help
 
 
