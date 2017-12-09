@@ -2,10 +2,6 @@
 #include "MathHelper.h"
 #include "NeuralLayer.h"
 
-#pragma region Fields
-const float(*NeuralLayer::NeuronActivationFunction)(float input) = NULL;
-#pragma endregion
-
 #pragma region Constructors
 /// <summary>
 /// Initializes a new neural layer for a fully connected feedforward neural network with
@@ -132,4 +128,12 @@ void NeuralLayer::SetRandomWeights(float minValue, float maxValue) {
 	}
 }
 
+/// <summary>
+/// The activation function of an artificial neuron.
+/// </summary>
+/// <param name="input">The input value of the function.</param>
+/// <returns>The calculated output value of the function.</returns>
+float NeuralLayer::NeuronActivationFunction(float input) {
+	return MathHelper::SoftSignFunction(input);
+}
 // TODO: Add a ToString function!

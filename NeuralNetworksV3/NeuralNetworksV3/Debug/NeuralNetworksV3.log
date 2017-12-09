@@ -1,6 +1,95 @@
 ﻿  GeneticsManager.cpp
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(3): fatal error C1083: Cannot open include file: 'Agent.h': No such file or directory
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C3646: 'fnn': unknown override specifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\mathhelper.h(19): warning C4091: 'static ': ignored on left of 'MathHelper' when no variable is declared
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(32): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(43): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(81): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(82): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(210): error C2653: 'GameStateManager': is not a class or namespace name
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(210): error C2039: 'QueueForEvaluation': is not a member of 'GeneticsManager'
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(13): note: see declaration of 'GeneticsManager'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(221): error C3867: 'GeneticsManager::AllAgentsDied': non-standard syntax; use '&' to create a pointer to member
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(306): error C2511: 'std::vector<Genotype,std::allocator<_Ty>> GeneticsManager::RandomRecombination(std::vector<_Ty,std::allocator<_Ty>>,unsigned int)': overloaded member function not found in 'GeneticsManager'
+          with
+          [
+              _Ty=Genotype
+          ]
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(13): note: see declaration of 'GeneticsManager'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(367): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(367): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(368): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(368): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(370): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(370): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(449): error C2084: function 'int GeneticsManager::GetPopulationSize(void)' already has a body
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(325): note: see previous definition of 'GetPopulationSize'
   GeneticAlgorithm.cpp
 c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\mathhelper.h(19): warning C4091: 'static ': ignored on left of 'MathHelper' when no variable is declared
-c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(3): fatal error C1083: Cannot open include file: 'Agent.h': No such file or directory
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C3646: 'fnn': unknown override specifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(112): error C3646: 'geneticAlgorithm': unknown override specifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(112): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(223): error C2061: syntax error: identifier 'GeneticAlgorithm'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(119): error C2065: 'geneticAlgorithm': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(119): error C2228: left of '.generationCount' must have class/struct/union
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(119): note: type is 'unknown-type'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(28): warning C4068: unknown pragma
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(39): error C3867: 'GeneticAlgorithm::GenotypeLoadingMethod': non-standard syntax; use '&' to create a pointer to member
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(72): error C2660: 'GeneticsManager::OnGATermination': function does not take 1 arguments
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(107): error C3867: 'GeneticAlgorithm::FitnessCalculationFinished': non-standard syntax; use '&' to create a pointer to member
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(112): error C3867: 'GeneticAlgorithm::CheckTerminationCriteria': non-standard syntax; use '&' to create a pointer to member
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticalgorithm.cpp(141): error C3867: 'GeneticAlgorithm::GenotypeSavingMethod': non-standard syntax; use '&' to create a pointer to member
+  Agent.cpp
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(10): error C3646: 'genotype': unknown override specifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C3646: 'fnn': unknown override specifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(30): error C2061: syntax error: identifier 'Genotype'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\mathhelper.h(19): warning C4091: 'static ': ignored on left of 'MathHelper' when no variable is declared
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(32): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(43): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(81): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(82): error C2659: '=': function as left operand
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(202): error C2661: 'Agent::Agent': no overloaded function takes 2 arguments
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(210): error C2653: 'GameStateManager': is not a class or namespace name
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(210): error C2039: 'QueueForEvaluation': is not a member of 'GeneticsManager'
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(13): note: see declaration of 'GeneticsManager'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(221): error C3867: 'GeneticsManager::AllAgentsDied': non-standard syntax; use '&' to create a pointer to member
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(306): error C2511: 'std::vector<Genotype,std::allocator<_Ty>> GeneticsManager::RandomRecombination(std::vector<_Ty,std::allocator<_Ty>>,unsigned int)': overloaded member function not found in 'GeneticsManager'
+          with
+          [
+              _Ty=Genotype
+          ]
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(13): note: see declaration of 'GeneticsManager'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(367): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(367): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(368): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(368): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(370): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(370): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.cpp(449): error C2084: function 'int GeneticsManager::GetPopulationSize(void)' already has a body
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\geneticsmanager.h(325): note: see previous definition of 'GetPopulationSize'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(11): error C2511: 'Agent::Agent(Genotype,std::vector<int,std::allocator<_Ty>>)': overloaded member function not found in 'Agent'
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.h(3): note: see declaration of 'Agent'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(12): error C2597: illegal reference to non-static member 'Agent::isAlive'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(13): error C2671: 'Agent::{ctor}': static member functions do not have 'this' pointers
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(13): error C2227: left of '->genotype' must point to class/struct/union/generic type
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(14): error C2065: 'fnn': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(17): error C2065: 'fnn': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(17): error C2228: left of '.weightCount' must have class/struct/union
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(17): note: type is 'unknown-type'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(23): error C2065: 'fnn': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(23): error C2228: left of '.layers' must have class/struct/union
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(23): note: type is 'unknown-type'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(23): error C2228: left of '.size' must have class/struct/union
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(24): error C2065: 'fnn': undeclared identifier
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(24): error C2228: left of '.layers' must have class/struct/union
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(24): note: type is 'unknown-type'
+c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\agent.cpp(24): error C2512: 'NeuralLayer': no appropriate default constructor available
+  c:\users\peter\source\repos\neuralnetworksv3\neuralnetworksv3\neurallayer.h(4): note: see declaration of 'NeuralLayer'
   Generating Code...

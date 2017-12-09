@@ -6,7 +6,6 @@
 //TODO: Add the MathHelper class. Add a RandomRange (min, max) function to the MathHelper class.
 class GeneticAlgorithm
 {
-	GeneticsManager gm; // GeneticsManager associated w/ this GeneticAlgorithm
 	// TODO: Make sure that genotypes are sorted in ascending order by using std::sort (vector.start, vector.end, std::greater<int>()).
 	// (Don't just use std::sort(vector.start, vector.end)
 public:

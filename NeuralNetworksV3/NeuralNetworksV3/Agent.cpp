@@ -11,22 +11,21 @@
 Agent::Agent (Genotype genotype, std::vector<int> topology) {
 	isAlive = false;
 	this->genotype = genotype;
-	fnn = new NeuralNetwork(topology);
-	foreach(NeuralLayer layer in fnn.layers) {
-		layer.NeuronActivationFunction = defaultActivation;
-	}
+	fnn = NeuralNetwork(topology);
 
 	// Check if the given topology is valid with the given genotype.
-	if (fnn.weightCount != genotype.parameterCount)
+	if (fnn.weightCount != genotype.GetParameterCount())
 		throw new std::invalid_argument ("The given genotype's parameter count must match the neural network topology's weight count.");
 
 	// Construct a feedforward neural network (FNN) from the given genotype.
-	IEnumerator<float> parameters = genotype.GetEnumerator();
-	foreach(NeuralLayer layer in fnn.layers) { // Loop over all the layers in the NeuralNetwork.
-		for (int i = 0; i < layer.weights.Length; i++) { // Loop over all the nodes of the current layer.
-			for (int j = 0; j < layer.weights[i].Length; j++) { // Loop over all the nodes of the next layer.
-				layer.weights[i][j] = parameters.Current;
-				parameters.MoveNext();
+	std::vector<float> parameters = genotype.GetParameterCopy ();
+	unsigned int parameterIndex = 0; // Current index w/in parameters.
+	for (int i = 0; i < fnn.layers.size; i++) {// Loop over all the layers in the NeuralNetwork.
+		NeuralLayer layer = fnn.layers[i];
+
+		for (unsigned int i = 0; i < layer.weights.size(); i++) { // Loop over all the nodes of the current layer.
+			for (unsigned int j = 0; j < layer.weights[i].size(); j++) { // Loop over all the nodes of the next layer.
+				layer.weights[i][j] = parameters [parameterIndex++];
 			}
 		}
 	}

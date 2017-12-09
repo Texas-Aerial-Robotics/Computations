@@ -1,6 +1,7 @@
 #pragma once
 #include "GeneticAlgorithm.h"
 #include "Agent.h"
+#include "Genotype.h"
 #include "NeuralNetwork.h"
 #include <vector>
 #include <math.h> // For std math functions
