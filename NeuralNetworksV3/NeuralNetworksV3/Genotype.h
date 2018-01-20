@@ -5,19 +5,6 @@ class Genotype
 
 #pragma region Fields
 public:
-	/*#region Debug
-	/// <summary>
-	/// The index of the most-recently-created Agent.
-	/// </summary>
-	public static int currentGenotypeIndex = 0;
-
-	/// <summary>
-	/// The index of this agent.
-	/// </summary>
-	public int genotypeIndex;
-	#endregion
-	*/
-
 	/// <summary>
 	/// The current evaluation of this genotype.
 	/// An evaluation is a raw score used to determine the fitness of a genotype.
@@ -78,35 +65,6 @@ public:
 	/// <param name="value">The value that parameters[index] will take.</param>
 	void SetParameter(int index, float value);
 #pragma endregion
-	/*
-	/// <summary>
-	/// Compares this genotype with another genotype based on their fitness values.
-	/// </summary>
-	/// <param name="other">The genotype to compare this genotype with.</param>
-	/// <returns>The result of comparing the 2 genotypes' fitnesses in descending order.</returns>
-	int CompareTo(Genotype other) {
-	// Compare fitnesses in reverse (descending) order to get larger fitness to be sorted first.
-	return other.fitness - fitness;
-	}*/
-
-	/*#region IEnumerable
-	/// <summary>
-	/// Gets an Enumerator to iterate over all the parameters of this genotype.
-	/// </summary>
-	// This is a generic implementation of GetEnumerator().
-	public IEnumerator<float> GetEnumerator() {
-	for (int i = 0; i < parameters.Length; i++)
-	yield return parameters[i];
-	}
-
-	/// <summary>
-	/// Gets an Enumerator to iterate over all parameters of this genotype.
-	/// </summary>
-	// This is a non-generic implementation of GetEnumerator().
-	IEnumerator IEnumerable.GetEnumerator() {
-	return GetEnumerator();
-	}
-	#endregion*/
 
 	/// <summary>
 	/// Sets the parameters of this genotype to random values in a given range.

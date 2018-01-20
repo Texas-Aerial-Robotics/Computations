@@ -31,13 +31,13 @@ void GeneticsManager::StartAdaptation() {
 
 	geneticAlgorithm.Evaluation = SetUpPopulationEvaluation;
 
-	// Change the recombination mode of the simulation based on whether asexualRecombination is true.
-	if (asexualRecombinationMode) {
+	// TODO: Change the recombination mode of the simulation based on whether asexualRecombination is true.
+	/*if (asexualRecombinationMode) {
 		geneticAlgorithm.RecombinationOperator = &AsexualRecombination;
 	}
 	else {
 		geneticAlgorithm.RecombinationOperator = RandomRecombination;
-	}
+	}*/
 
 	// MutateAllButBestTwo is the only viable genetic mutation operator for now.
 	geneticAlgorithm.MutationOperator = MutateAllButBestTwo;
@@ -184,7 +184,7 @@ void GeneticsManager::OnGATermination(GeneticAlgorithm ga) {
 /// </summary>
 /// <param name="waitTime">The wait time in seconds.</param>
 void GeneticsManager::RestartAlgorithm(float waitTime) {
-	Invoke("StartAdaptation", waitTime);
+	//Invoke("StartAdaptation", waitTime);
 }
 
 /// <summary>
@@ -194,12 +194,12 @@ void GeneticsManager::RestartAlgorithm(float waitTime) {
 /// <param name="currentPopulation">The current population.</param>
 void GeneticsManager::SetUpPopulationEvaluation(std::vector<Genotype> currentPopulation) {
 	// Create new agents from currentPopulation.
-	agents.Clear();
+	agents.clear();
 	agentsDiedCount = 0;
 
 	for (unsigned int i = 0; i < currentPopulation.size(); i++) {//foreach(Genotype genotype in currentPopulation) {
 																	//agents.Add(new Agent(genotype, MathHelper.SoftSignFunction, fnnTopology));
-		agents[i] = Agent (currentPopulation[i], fnnTopology);
+		agents[i] = *new Agent (currentPopulation[i], fnnTopology); // This may be wrong...
 	}
 
 	/*for (unsigned int i = 0; i < agents.size(); i++) {
@@ -302,7 +302,7 @@ return intermediatePopulation;
 /// <returns>A new, un-mutated population.</returns>
 /// <param name="intermediatePopulation">The intermediate population.</param>
 /// <param name="newPopulationSize">The size of the new population.</param>
-std::vector<Genotype> GeneticsManager::RandomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
+std::vector<Genotype> GeneticsManager::RandomRecombination(std::vector<Genotype> intermediatePopulation, unsigned int newPopulationSize) {
 	// Check arguments.
 	if (intermediatePopulation.size() < 2)
 		throw std::invalid_argument("The intermediate population has to be at least of size 2 for this operator");
@@ -363,10 +363,10 @@ std::vector<Genotype> GeneticsManager::AsexualRecombination(std::vector<Genotype
 	// Add new genotypes to the new population until there are newPopulationSize genotypes in the new population.
 	while (newPopulation.size() < newPopulationSize) {
 		// Get two random indices that are not the same.
-		int randomIndex1 = MathHelper::RandomRange(0, intermediatePopulation.size());
-		int randomIndex2 = MathHelper::RandomRange(0, intermediatePopulation.size());
+		int randomIndex1 = std::round(MathHelper::RandomRange(0, intermediatePopulation.size()));
+		int randomIndex2 = std::round(MathHelper::RandomRange(0, intermediatePopulation.size()));
 		while (randomIndex1 == randomIndex2) {
-			randomIndex2 = MathHelper::RandomRange(0, intermediatePopulation.size());
+			randomIndex2 = std::round(MathHelper::RandomRange(0, intermediatePopulation.size()));
 		}
 
 		// Select 2 genotypes, and COPY them (don't just add them to the new population).
@@ -385,7 +385,7 @@ std::vector<Genotype> GeneticsManager::AsexualRecombination(std::vector<Genotype
 /// </summary>
 /// <param name="newPopulation">The new population.</param>
 void GeneticsManager::MutateAllButBestTwo(std::vector<Genotype> newPopulation) {
-	for (int i = 2; i < newPopulation.size(); i++) {
+	for (unsigned int i = 2; i < newPopulation.size(); i++) {
 		if (MathHelper::RandomRange(0.f, 1.f) < GeneticAlgorithm::defMutationProp) {
 			GeneticAlgorithm::MutateGenotype(newPopulation[i], GeneticAlgorithm::defMutationProb, GeneticAlgorithm::defMutationAmount);
 		}
@@ -417,8 +417,8 @@ void GeneticsManager::StandardDeviationFitnessCalculation (std::vector<Genotype>
 		sampleMeanEval += genotype.evaluation;
 
 		// TODO: Add basic text output.
-		if (genotype.evaluation == 0)
-			Debug.Log("Problem!");
+		/*if (genotype.evaluation == 0)
+			Debug.Log("Problem!");*/
 
 		currentPopulationSize++;
 	}

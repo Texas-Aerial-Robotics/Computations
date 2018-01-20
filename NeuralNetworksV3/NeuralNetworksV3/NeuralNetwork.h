@@ -24,6 +24,7 @@ public:
 
 
 #pragma region Constructors
+	NeuralNetwork();
 	NeuralNetwork(std::vector<int> _topology);
 	~NeuralNetwork();
 #pragma endregion

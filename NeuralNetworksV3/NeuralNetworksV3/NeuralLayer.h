@@ -4,12 +4,7 @@ class NeuralLayer
 {
 public:
 #pragma region Function Pointers
-	/// <summary>
-	/// Delegate representing the activation function of an artificial neuron.
-	/// </summary>
-	/// <param name="input">The input value of the function.</param>
-	/// <returns>The calculated output value of the function.</returns>
-	static const float(*NeuronActivationFunction)(float input);
+	static float NeuronActivationFunction(float input);
 #pragma endregion
 
 #pragma region Fields
