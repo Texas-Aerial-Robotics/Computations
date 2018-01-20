@@ -17,3 +17,39 @@ target_link_libraries(roombacircle3 ${GAZEBO_LIBRARIES})
 
 add_library(roombacircle4 SHARED roombacircle4.cc)
 target_link_libraries(roombacircle4 ${GAZEBO_LIBRARIES})
+
+add_library(target1 SHARED target1.cc)
+target_link_libraries(target1 ${GAZEBO_LIBRARIES})
+
+add_library(target2 SHARED target2.cc)
+target_link_libraries(target2 ${GAZEBO_LIBRARIES})
+
+add_library(target3 SHARED target3.cc)
+target_link_libraries(target3 ${GAZEBO_LIBRARIES})
+
+add_library(target4 SHARED target4.cc)
+target_link_libraries(target4 ${GAZEBO_LIBRARIES})
+
+add_library(target5 SHARED target5.cc)
+target_link_libraries(target5 ${GAZEBO_LIBRARIES})
+
+add_library(target6 SHARED target6.cc)
+target_link_libraries(target6 ${GAZEBO_LIBRARIES})
+
+add_library(target7 SHARED target7.cc)
+target_link_libraries(target7 ${GAZEBO_LIBRARIES})
+
+add_library(target8 SHARED target8.cc)
+target_link_libraries(target8 ${GAZEBO_LIBRARIES})
+
+add_library(target9 SHARED target9.cc)
+target_link_libraries(target9 ${GAZEBO_LIBRARIES})
+
+add_library(target10 SHARED target10.cc)
+target_link_libraries(target10 ${GAZEBO_LIBRARIES})
+
+
+
+
+
+

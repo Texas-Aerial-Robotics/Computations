@@ -41,6 +41,76 @@
 	<plugin name ="roombacircle4" filename="libroombacircle4.so"/>
 </model>
 
+<model name="t1">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target1" filename="libtarget1.so"/>
+</model>
+
+<model name="t2">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target2" filename="libtarget2.so"/>
+</model>
+
+
+<model name="t3">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target3" filename="libtarget3.so"/>
+</model>
+
+<model name="t4">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target4" filename="libtarget4.so"/>
+</model>
+<model name="t5">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target5" filename="libtarget5.so"/>
+</model>
+
+<model name="t6">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target6" filename="libtarget6.so"/>
+</model>
+<model name="t7">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target7" filename="libtarget7.so"/>
+</model>
+
+<model name="t8">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target8" filename="libtarget8.so"/>
+</model>
+
+<model name="t10">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target10" filename="libtarget10.so"/>
+</model>
+
+<model name="t9">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="target9" filename="libtarget9.so"/>
+</model>
+
+
 
   </world>
 </sdf>

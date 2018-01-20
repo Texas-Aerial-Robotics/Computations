@@ -1,0 +1,46 @@
+<?xml version="1.0"?> 
+<sdf version="1.5">
+  <world name="default">
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+<model name="roomba1">
+    <include>
+		<uri> model://roomba1 </uri>
+    </include> 
+
+	<plugin name="roombacircle" filename="libroombacircle.so"/>
+</model>
+
+<model name="roomba2">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="roombacircle2" filename="libroombacircle2.so"/>
+</model>
+
+
+<model name="roomba3">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="roombacircle3" filename="libroombacircle3.so"/>
+</model>
+
+<model name="roomba4">
+	<include>
+		<uri>model://roomba1</uri>
+	</include>
+	<plugin name ="roombacircle4" filename="libroombacircle4.so"/>
+</model>
+
+
+  </world>
+</sdf>
