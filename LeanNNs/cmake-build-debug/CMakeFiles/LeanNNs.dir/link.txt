@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/LeanNNs.dir/main.cpp.o CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o  -o LeanNNs 

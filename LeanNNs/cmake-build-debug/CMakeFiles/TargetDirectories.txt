@@ -1,0 +1,3 @@
+/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir
