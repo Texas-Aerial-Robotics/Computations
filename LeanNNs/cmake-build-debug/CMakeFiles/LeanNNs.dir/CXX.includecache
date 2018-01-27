@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp
+NeuralNetwork.h
+/home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
+
+/home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
+stdint.h
+-
+
+/home/peter/CLionProjects/LeanNNs/main.cpp
+iostream
+-
+
