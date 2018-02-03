@@ -2,78 +2,89 @@
 // Created by peter on 1/24/18.
 //
 
+#include <cstdlib>
 #include "NeuralNetwork.h"
 
 // TODO: Implement activation and weight mutation functions.
+// TODO: NN Constructors
+
+
+
+NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
+    this->topology = topology;
+    // Create neurons vector, output vector
+    neurons = std::vector <std::vector<float>> (topology.size());
+    weights = std::vector <std::vector<std::vector<float>>> (topology.size());
+
+    // Initialize neurons, weights, and output vectors.
+    for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
+        neurons[i] = std::vector <float>(topology[i]);
+        weights[i] = std::vector <std::vector<float>>(topology[i]);
+
+        for (int32_t j = 0; j < topology[i]; j++) { // Current layer, current neuron
+            weights[i][j] = std::vector<float>(topology[i + 1]);
+
+            for (int32_t k = 0; k < topology[i+1]; k++) { // Next layer, current neuron
+                weights[i][j][k] = rand; // TODO: implement method for random float vals.
+            }
+        }
+    }
+
+    int32_t outputCount = topology [topology.size() - 1];
+
+    neurons[topology.size() - 1] = std::vector<float>(outputCount);
+}
 
 NeuralNetwork NeuralNetwork::DeepCopy(NeuralNetwork nnToCopy) {
-    int layerCount = nnToCopy.layerCount;
-    int topology[layerCount];
+    std::vector<int32_t > topology;
 
-    for (int32_t i = 0; i < layerCount; i++) {
+    for (int32_t i = 0; i < topology.size(); i++) {
         topology[i] = nnToCopy.topology[i];
     }
 
     // Just deep copy weights: neurons and output are essentially temp variables:
-    int32_t weightCount = nnToCopy.weightCount;
-    float weights[weightCount];
+    std::vector<std::vector<std::vector<float>>> weights;
 
-    int32_t prevLayerNeurons = 0; // Total neuron count of all previous layers.
-    int32_t currentLayerNeurons = 0; // Neuron count of current layer.
-    for (int32_t i = 0; i < layerCount - 1; i++) { // Current layer
-        currentLayerNeurons = topology[i];
-
-        for (int32_t j = 0; j < currentLayerNeurons; j++) { // Current neuron, current layer.
-            for (int32_t k = 0; k < topology[i + 1]; k++) { // Current neuron, next layer.
-                weights[prevLayerNeurons + currentLayerNeurons + k] =
-                        nnToCopy.weights[prevLayerNeurons + currentLayerNeurons + k];
+    for (int32_t i = 0; i < weights.size(); i++) { // Current layer
+        for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
+            for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
+                neurons[i][k] += weights[i][j][k] * neurons[i][j];
             }
-
         }
-
-        prevLayerNeurons += currentLayerNeurons;
     }
+
+    return NeuralNetwork (topology, weights);
 }
 
 // Note: to get output length, just get NeuralNetwork's topology[layerCount - 1]!
-int32_t* NeuralNetwork::FeedForward(float* input, int32_t inputLength) { // Cool! float* is the same as float[]!
-    int32_t prevLayerNeurons = 0; // Total neuron count of all previous layers.
-    int32_t currentLayerNeurons = 0; // Neuron count of current layer.
-    for (int32_t i = 0; i < layerCount - 1; i++) { // Current layer
-        currentLayerNeurons = topology[i];
-
-        for (int32_t j = 0; j < currentLayerNeurons; j++) { // Current neuron, current layer.
-            for (int32_t k = 0; k < topology[i + 1]; k++) { // Current neuron, next layer.
-                neurons[prevLayerNeurons + currentLayerNeurons + k] += ActivationFunction(neurons[prevLayerNeurons + j]);
+std::vector<float> NeuralNetwork::FeedForward(std::vector<float> input) {
+    // Pass inputs through NN.
+    for (int32_t i = 0; i < weights.size(); i++) { // Current layer
+        for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
+            for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
+                neurons[i][k] += weights[i][j][k] * neurons[i][j];
             }
-
         }
-
-        prevLayerNeurons += currentLayerNeurons;
     }
 
-    prevLayerNeurons -= currentLayerNeurons; // Get back to the START of the last layer.
-    for (int32_t i = prevLayerNeurons, j = 0; j < topology[layerCount - 1]; i++, j++) {
-        output[j] = neurons[i];
+    // Copy last layer's vals. to output.
+    for (int32_t i = 0; i < topology[topology.size() - 1]; i++) {
+        output[i] = neurons[topology.size()][i];
     }
-    return (int32_t*) output;
+
+    return output;
 }
 
 void NeuralNetwork::Mutate() {
-    int32_t prevLayerNeurons = 0; // Total neuron count of all previous layers.
-    int32_t currentLayerNeurons = 0; // Neuron count of current layer.
-    for (int32_t i = 0; i < layerCount - 1; i++) { // Current layer
-        currentLayerNeurons = topology[i];
-
-        for (int32_t j = 0; j < currentLayerNeurons; j++) { // Current neuron, current layer.
-
-            for (int32_t k = 0; k < topology[i + 1]; k++) { // Current neuron, next layer.
-                // Mutate current weight!
-                weights[prevLayerNeurons + currentLayerNeurons + k] = MutateWeight (weights[prevLayerNeurons + currentLayerNeurons + k]);
+    for (int32_t i = 0; i < weights.size(); i++) { // Current layer
+        for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
+            for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
+                weights[i][j][k] = MutateWeight(weights[i][j][k]);
             }
-
         }
-
-        prevLayerNeurons += currentLayerNeurons;
     }
+}
+
+static float ActivationFunction(float input) {
+
 }

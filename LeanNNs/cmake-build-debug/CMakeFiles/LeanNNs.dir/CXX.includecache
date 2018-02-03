@@ -7,11 +7,15 @@
 #IncludeRegexTransform: 
 
 /home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp
+cstdlib
+-
 NeuralNetwork.h
 /home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
 
 /home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
 stdint.h
+-
+vector
 -
 
 /home/peter/CLionProjects/LeanNNs/main.cpp
