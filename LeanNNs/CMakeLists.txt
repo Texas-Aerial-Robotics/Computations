@@ -3,4 +3,4 @@ project(LeanNNs)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(LeanNNs main.cpp NeuralNetwork.cpp NeuralNetwork.h)
+add_executable(LeanNNs main.cpp NeuralNetwork.cpp NeuralNetwork.h GeneticAlgorithm.cpp GeneticAlgorithm.h AIAgent.cpp AIAgent.h)

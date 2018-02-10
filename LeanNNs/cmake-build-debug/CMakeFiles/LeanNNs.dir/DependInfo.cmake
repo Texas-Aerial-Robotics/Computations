@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/peter/CLionProjects/LeanNNs/AIAgent.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/AIAgent.cpp.o"
+  "/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.o"
   "/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o"
   "/home/peter/CLionProjects/LeanNNs/main.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/main.cpp.o"
   )

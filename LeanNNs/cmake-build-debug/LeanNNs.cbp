@@ -84,6 +84,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/peter/CLionProjects/LeanNNs/AIAgent.cpp">
+			<Option target="LeanNNs"/>
+		</Unit>
+		<Unit filename="/home/peter/CLionProjects/LeanNNs/AIAgent.h">
+			<Option target="LeanNNs"/>
+		</Unit>
+		<Unit filename="/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.cpp">
+			<Option target="LeanNNs"/>
+		</Unit>
+		<Unit filename="/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.h">
+			<Option target="LeanNNs"/>
+		</Unit>
 		<Unit filename="/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp">
 			<Option target="LeanNNs"/>
 		</Unit>

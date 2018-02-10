@@ -20,6 +20,15 @@ class NeuralNetwork {
 
 // TODO: Random creation function, file IO.
 
+    // Weight stuff.
+    const float minInitWeight = -1;
+    const float maxInitWeight = 1;
+    static constexpr float weightMutChance = .75;
+    static constexpr float minWeightMutCoeff = .25;
+    static constexpr float maxWeightMutCoeff = 4;
+    static constexpr float minWeightMutOffset = -1;
+    static constexpr float maxWeightMutOffset = 1;
+
     // 1-dimension:
     // 1. Current layer
     std::vector<int32_t> topology;
@@ -38,15 +47,12 @@ class NeuralNetwork {
     // Current output.
     std::vector<float> output; // TODO: Init. output: float output[topology[layerCount - 1]];
 
-    const float weightMutChance = .5; // Chance of a given weight being mutated.
-    const float minWeightMutProp = .5; // Min possible new weight value, prop. of weight's curr. val.
-    const float maxWeightMutProp = 2; // Max possible new weight value as proportion of weight's current value
-
     // Creates a NN w/ the given topology and random weights.
     NeuralNetwork (std::vector<int32_t> topology);
 
     // Creates a NN w/ the given topology and weights.
-    NeuralNetwork (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>>);
+    // Assumes given weights is independent of other NNs.
+    NeuralNetwork (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> weights);
 
     // Input: Old NN to copy.
     // Output: New NN w/ copied fields.
@@ -60,10 +66,14 @@ class NeuralNetwork {
     void Mutate();
 
     // Mutates the given weight if it should be mutated, returns new weight.
-    static float MutateWeight(float input);
+    static float MutateWeight(float weight);
 
     // Implements a SoftSign activation function.
     static float ActivationFunction(float input);
+
+    static float RandRange (float minVal, float maxVal);
+
+    static float Abs (float input);
 };
 
 #endif //LEANNNS_NEURALNETWORK_H

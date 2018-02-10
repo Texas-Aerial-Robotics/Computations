@@ -5,11 +5,6 @@
 #include <cstdlib>
 #include "NeuralNetwork.h"
 
-// TODO: Implement activation and weight mutation functions.
-// TODO: NN Constructors
-
-
-
 NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
     this->topology = topology;
     // Create neurons vector, output vector
@@ -25,9 +20,24 @@ NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
             weights[i][j] = std::vector<float>(topology[i + 1]);
 
             for (int32_t k = 0; k < topology[i+1]; k++) { // Next layer, current neuron
-                weights[i][j][k] = rand; // TODO: implement method for random float vals.
+                weights[i][j][k] = RandRange (minInitWeight, maxInitWeight);
             }
         }
+    }
+
+    int32_t outputCount = topology [topology.size() - 1];
+
+    neurons[topology.size() - 1] = std::vector<float>(outputCount);
+}
+
+// Assumes given weights is independent of other NNs.
+NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> weights) {
+    this->topology = topology;
+    this->weights = weights;
+
+    // Initialize neurons, output.
+    for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
+        neurons[i] = std::vector <float>(topology[i]);
     }
 
     int32_t outputCount = topology [topology.size() - 1];
@@ -85,6 +95,24 @@ void NeuralNetwork::Mutate() {
     }
 }
 
-static float ActivationFunction(float input) {
+// Returns a mutated version of the given weight value
+float NeuralNetwork::MutateWeight(float weight) {
+    if (RandRange(0, 1) < weightMutChance) {
+        // Flip sign, add, or multiply weight.
 
+    }
+}
+
+float NeuralNetwork::ActivationFunction(float input) {
+    return input / (1 + Abs(input));
+}
+
+// Returns a random float value b/w minVal and maxVal.
+float NeuralNetwork::RandRange (float minVal, float maxVal) {
+    return minVal + (maxVal - minVal) * ((float) rand() / (float) RAND_MAX);
+}
+
+float NeuralNetwork::Abs (float input) {
+    if (input < 0) return -input;
+    else return input;
 }
