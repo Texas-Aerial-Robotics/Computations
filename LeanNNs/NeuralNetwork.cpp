@@ -66,6 +66,32 @@ NeuralNetwork NeuralNetwork::DeepCopy(NeuralNetwork nnToCopy) {
     return NeuralNetwork (topology, weights);
 }
 
+NeuralNetwork NeuralNetwork::ReadFromFile(char *path) {
+    // fopen at path
+
+    // Read topology
+
+    // Create weights vector based on topology info.
+    // Loop through weights dimensions (using topology info),
+    // and copy weights from file into weights vector.
+
+    // fclose
+
+    // Return new NN w/ given topology and weights.
+}
+
+void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
+    // fopen at path
+
+    // Write topology
+
+    // Write all weights
+
+    // fclose
+
+    // Done!
+}
+
 // Note: to get output length, just get NeuralNetwork's topology[layerCount - 1]!
 std::vector<float> NeuralNetwork::FeedForward(std::vector<float> input) {
     // Pass inputs through NN.

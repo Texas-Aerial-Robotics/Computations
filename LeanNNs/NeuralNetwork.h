@@ -58,6 +58,12 @@ class NeuralNetwork {
     // Output: New NN w/ copied fields.
     NeuralNetwork DeepCopy (NeuralNetwork nnToCopy);
 
+    // Reads NN from file at path.
+    static NeuralNetwork ReadFromFile (char path[]);
+
+    // Writes the given NN to the file at path.
+    static void WriteToFile (NeuralNetwork nn, char path[]);
+
     // Input: float vector w/ its length
     // Returns a pointer to a float array representing this NN's output.
     std::vector<float> FeedForward(std::vector<float> input);
@@ -71,8 +77,10 @@ class NeuralNetwork {
     // Implements a SoftSign activation function.
     static float ActivationFunction(float input);
 
+    // Returns a random float b/w minVal and maxVal.
     static float RandRange (float minVal, float maxVal);
 
+    // Floating point absolute value function.
     static float Abs (float input);
 };
 
