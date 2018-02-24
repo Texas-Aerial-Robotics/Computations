@@ -82,6 +82,10 @@ class NeuralNetwork {
 
     // Floating point absolute value function.
     static float Abs (float input);
+
+    static void WriteCharsToFile (char* chars, uint32_t length, FILE* fileStream);
+
+    static void ReadCharsFromFile (char* chars, uint32_t length, FILE* fileStream);
 };
 
 #endif //LEANNNS_NEURALNETWORK_H

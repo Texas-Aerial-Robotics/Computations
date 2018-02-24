@@ -54,10 +54,10 @@ RM = /home/peter/Desktop/clion-2017.3.2/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peter/CLionProjects/LeanNNs
+CMAKE_SOURCE_DIR = "/home/peter/Desktop/Link to CLionProjects/LeanNNs"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peter/CLionProjects/LeanNNs/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"
 
 #=============================================================================
 # Target rules for target CMakeFiles/LeanNNs.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/peter/CLionProjects/LeanNNs/cmake-build-debug
 CMakeFiles/LeanNNs.dir/all:
 	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/depend
 	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target LeanNNs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4,5 "Built target LeanNNs"
 .PHONY : CMakeFiles/LeanNNs.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/LeanNNs.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LeanNNs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles" 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/LeanNNs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/LeanNNs.dir/rule
 
 # Convenience name for target.

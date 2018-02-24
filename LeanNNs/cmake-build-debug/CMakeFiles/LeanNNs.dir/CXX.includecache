@@ -6,37 +6,41 @@
 
 #IncludeRegexTransform: 
 
-/home/peter/CLionProjects/LeanNNs/AIAgent.cpp
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.cpp
 AIAgent.h
-/home/peter/CLionProjects/LeanNNs/AIAgent.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.h
 
-/home/peter/CLionProjects/LeanNNs/AIAgent.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.h
 
-/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.cpp
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.cpp
 GeneticAlgorithm.h
-/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.h
 algorithm
 -
 
-/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.h
 vector
 -
 AIAgent.h
-/home/peter/CLionProjects/LeanNNs/AIAgent.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.h
 
-/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.cpp
 cstdlib
 -
+stdio.h
+-
+string.h
+-
 NeuralNetwork.h
-/home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.h
 
-/home/peter/CLionProjects/LeanNNs/NeuralNetwork.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.h
 stdint.h
 -
 vector
 -
 
-/home/peter/CLionProjects/LeanNNs/main.cpp
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/main.cpp
 iostream
 -
 

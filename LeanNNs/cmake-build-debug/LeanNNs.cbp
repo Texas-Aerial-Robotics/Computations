@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/peter/CLionProjects/LeanNNs/cmake-build-debug"/>
+				<Option working_dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/peter/CLionProjects/LeanNNs/cmake-build-debug"/>
+				<Option working_dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/peter/CLionProjects/LeanNNs/cmake-build-debug"/>
+				<Option working_dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LeanNNs">
-				<Option output="/home/peter/CLionProjects/LeanNNs/cmake-build-debug/LeanNNs" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/peter/CLionProjects/LeanNNs/cmake-build-debug"/>
+				<Option output="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/LeanNNs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 LeanNNs"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 LeanNNs"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LeanNNs/fast">
-				<Option output="/home/peter/CLionProjects/LeanNNs/cmake-build-debug/LeanNNs" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/peter/CLionProjects/LeanNNs/cmake-build-debug"/>
+				<Option output="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/LeanNNs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,35 +77,35 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 LeanNNs/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 LeanNNs/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/peter/Desktop/Link\ to\ CLionProjects/LeanNNs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/AIAgent.cpp">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.cpp">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/AIAgent.h">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.h">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.cpp">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.cpp">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/GeneticAlgorithm.h">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.h">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.cpp">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/NeuralNetwork.h">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.h">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/main.cpp">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/main.cpp">
 			<Option target="LeanNNs"/>
 		</Unit>
-		<Unit filename="/home/peter/CLionProjects/LeanNNs/CMakeLists.txt">
+		<Unit filename="/home/peter/Desktop/Link to CLionProjects/LeanNNs/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
