@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/LeanNNs.dir/main.cpp.o CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o  -o LeanNNs 
+/usr/bin/c++  -g   CMakeFiles/LeanNNs.dir/main.cpp.o CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.o CMakeFiles/LeanNNs.dir/AIAgent.cpp.o  -o LeanNNs 

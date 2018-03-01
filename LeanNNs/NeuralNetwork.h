@@ -20,6 +20,15 @@ class NeuralNetwork {
 
 // TODO: Random creation function, file IO.
 
+    // Weight stuff.
+    const float minInitWeight = -1;
+    const float maxInitWeight = 1;
+    static constexpr float weightMutChance = .75;
+    static constexpr float minWeightMutCoeff = .25;
+    static constexpr float maxWeightMutCoeff = 4;
+    static constexpr float minWeightMutOffset = -1;
+    static constexpr float maxWeightMutOffset = 1;
+
     // 1-dimension:
     // 1. Current layer
     std::vector<int32_t> topology;
@@ -38,19 +47,22 @@ class NeuralNetwork {
     // Current output.
     std::vector<float> output; // TODO: Init. output: float output[topology[layerCount - 1]];
 
-    const float weightMutChance = .5; // Chance of a given weight being mutated.
-    const float minWeightMutProp = .5; // Min possible new weight value, prop. of weight's curr. val.
-    const float maxWeightMutProp = 2; // Max possible new weight value as proportion of weight's current value
-
     // Creates a NN w/ the given topology and random weights.
     NeuralNetwork (std::vector<int32_t> topology);
 
     // Creates a NN w/ the given topology and weights.
-    NeuralNetwork (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>>);
+    // Assumes given weights is independent of other NNs.
+    NeuralNetwork (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> weights);
 
     // Input: Old NN to copy.
     // Output: New NN w/ copied fields.
     NeuralNetwork DeepCopy (NeuralNetwork nnToCopy);
+
+    // Reads NN from file at path.
+    static NeuralNetwork ReadFromFile (char path[]);
+
+    // Writes the given NN to the file at path.
+    static void WriteToFile (NeuralNetwork nn, char path[]);
 
     // Input: float vector w/ its length
     // Returns a pointer to a float array representing this NN's output.
@@ -60,10 +72,20 @@ class NeuralNetwork {
     void Mutate();
 
     // Mutates the given weight if it should be mutated, returns new weight.
-    static float MutateWeight(float input);
+    static float MutateWeight(float weight);
 
     // Implements a SoftSign activation function.
     static float ActivationFunction(float input);
+
+    // Returns a random float b/w minVal and maxVal.
+    static float RandRange (float minVal, float maxVal);
+
+    // Floating point absolute value function.
+    static float Abs (float input);
+
+    static void WriteCharsToFile (char* chars, uint32_t length, FILE* fileStream);
+
+    static void ReadCharsFromFile (char* chars, uint32_t length, FILE* fileStream);
 };
 
 #endif //LEANNNS_NEURALNETWORK_H

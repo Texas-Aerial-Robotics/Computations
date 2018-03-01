@@ -48,10 +48,10 @@ RM = /home/peter/Desktop/clion-2017.3.2/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peter/CLionProjects/LeanNNs
+CMAKE_SOURCE_DIR = "/home/peter/Desktop/Link to CLionProjects/LeanNNs"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peter/CLionProjects/LeanNNs/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles /home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles" "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,60 @@ LeanNNs: cmake_check_build_system
 LeanNNs/fast:
 	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/build
 .PHONY : LeanNNs/fast
+
+AIAgent.o: AIAgent.cpp.o
+
+.PHONY : AIAgent.o
+
+# target to build an object file
+AIAgent.cpp.o:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/AIAgent.cpp.o
+.PHONY : AIAgent.cpp.o
+
+AIAgent.i: AIAgent.cpp.i
+
+.PHONY : AIAgent.i
+
+# target to preprocess a source file
+AIAgent.cpp.i:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/AIAgent.cpp.i
+.PHONY : AIAgent.cpp.i
+
+AIAgent.s: AIAgent.cpp.s
+
+.PHONY : AIAgent.s
+
+# target to generate assembly for a file
+AIAgent.cpp.s:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/AIAgent.cpp.s
+.PHONY : AIAgent.cpp.s
+
+GeneticAlgorithm.o: GeneticAlgorithm.cpp.o
+
+.PHONY : GeneticAlgorithm.o
+
+# target to build an object file
+GeneticAlgorithm.cpp.o:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.o
+.PHONY : GeneticAlgorithm.cpp.o
+
+GeneticAlgorithm.i: GeneticAlgorithm.cpp.i
+
+.PHONY : GeneticAlgorithm.i
+
+# target to preprocess a source file
+GeneticAlgorithm.cpp.i:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.i
+.PHONY : GeneticAlgorithm.cpp.i
+
+GeneticAlgorithm.s: GeneticAlgorithm.cpp.s
+
+.PHONY : GeneticAlgorithm.s
+
+# target to generate assembly for a file
+GeneticAlgorithm.cpp.s:
+	$(MAKE) -f CMakeFiles/LeanNNs.dir/build.make CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.s
+.PHONY : GeneticAlgorithm.cpp.s
 
 NeuralNetwork.o: NeuralNetwork.cpp.o
 
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LeanNNs"
+	@echo "... AIAgent.o"
+	@echo "... AIAgent.i"
+	@echo "... AIAgent.s"
+	@echo "... GeneticAlgorithm.o"
+	@echo "... GeneticAlgorithm.i"
+	@echo "... GeneticAlgorithm.s"
 	@echo "... NeuralNetwork.o"
 	@echo "... NeuralNetwork.i"
 	@echo "... NeuralNetwork.s"

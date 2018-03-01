@@ -1,4 +1,4 @@
-# Install script for directory: /home/peter/CLionProjects/LeanNNs
+# Install script for directory: /home/peter/Desktop/Link to CLionProjects/LeanNNs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

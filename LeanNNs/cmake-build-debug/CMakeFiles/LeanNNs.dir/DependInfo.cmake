@@ -4,8 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/peter/CLionProjects/LeanNNs/NeuralNetwork.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o"
-  "/home/peter/CLionProjects/LeanNNs/main.cpp" "/home/peter/CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/main.cpp.o"
+  "/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.cpp" "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/AIAgent.cpp.o"
+  "/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.cpp" "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.o"
+  "/home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.cpp" "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o"
+  "/home/peter/Desktop/Link to CLionProjects/LeanNNs/main.cpp" "/home/peter/Desktop/Link to CLionProjects/LeanNNs/cmake-build-debug/CMakeFiles/LeanNNs.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
