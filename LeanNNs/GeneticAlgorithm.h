@@ -11,7 +11,6 @@
 class GeneticAlgorithm {
     /* Things to add:
      * Vector sorting based on score
-     * Adaptation function
      */
 
     std::vector<AIAgent> population;

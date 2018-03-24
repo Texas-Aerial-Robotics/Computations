@@ -11,5 +11,6 @@ CMakeFiles/LeanNNs.dir/GeneticAlgorithm.cpp.o: ../GeneticAlgorithm.h
 CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o: ../NeuralNetwork.cpp
 CMakeFiles/LeanNNs.dir/NeuralNetwork.cpp.o: ../NeuralNetwork.h
 
+CMakeFiles/LeanNNs.dir/main.cpp.o: ../NeuralNetwork.h
 CMakeFiles/LeanNNs.dir/main.cpp.o: ../main.cpp
 

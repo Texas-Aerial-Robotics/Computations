@@ -8,3 +8,4 @@
 void GeneticAlgorithm::AdaptPopulation() {
     std::sort(population.begin(), population.end(), AIAgent::cmp);
 }
+
