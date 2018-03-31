@@ -3,7 +3,6 @@
 //
 
 #include "AIAgent.h"
-
-bool AIAgent::cmp(AIAgent a, AIAgent b) {
+bool AIAgent::cmp(const AIAgent &a, const AIAgent &b) {
     return a.fitness > b.fitness;
 }

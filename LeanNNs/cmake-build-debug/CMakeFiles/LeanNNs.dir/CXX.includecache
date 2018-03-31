@@ -45,4 +45,8 @@ iostream
 -
 NeuralNetwork.h
 /home/peter/Desktop/Link to CLionProjects/LeanNNs/NeuralNetwork.h
+AIAgent.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/AIAgent.h
+GeneticAlgorithm.h
+/home/peter/Desktop/Link to CLionProjects/LeanNNs/GeneticAlgorithm.h
 

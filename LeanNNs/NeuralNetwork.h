@@ -42,9 +42,6 @@ class NeuralNetwork {
     // 3. Current weight
     std::vector<std::vector<std::vector<float>>> weights;
 
-    // Current output.
-    std::vector<float> output; // TODO: Init. output: float output[topology[layerCount - 1]];
-
 public:
     // Creates a NN w/ the given topology and random weights.
     NeuralNetwork (std::vector<int32_t> topology);
@@ -73,7 +70,7 @@ public:
 // Helper functions:
 private:
     // Allocates weights given a topology.
-    static std::vector<std::vector<std::vector<float>>> AllocWeights (std::vector<int32_t> topology);
+    static void AllocWeights (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> &weights);
 
     // Mutates the given weight if it should be mutated, returns new weight.
     static float MutateWeight(float weight);

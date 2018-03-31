@@ -9,14 +9,14 @@
 
 NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
     this->topology = topology;
-    // Create neurons vector, output vector
-    neurons = std::vector <std::vector<float>> (topology.size());
+
+    // Allocate neurons vector:
+    neurons.resize(topology.size());
 
     // Allocate weights.
-    weights = NeuralNetwork::AllocWeights(topology);
+    NeuralNetwork::AllocWeights(topology, weights);
 
-    // Initialize neurons, weights, and output vectors:
-
+    // Initialize neurons vector:
     for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
         neurons[i] = std::vector <float>(topology[i]);
 
@@ -28,7 +28,6 @@ NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
     }
 
     int32_t outputCount = topology [topology.size() - 1];
-
     neurons[topology.size() - 1] = std::vector<float>(outputCount);
 }
 
@@ -37,15 +36,13 @@ NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology, std::vector<std::vec
     this->topology = topology;
     this->weights = weights;
 
-    // Todo: initialize neurons before assigning stuff to them!
-    // Initialize neurons, output.
+    // Resize neurons before assigning stuff to them!
     neurons.resize(topology.size());
     for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
         neurons[i] = std::vector <float>(topology[i]);
     }
 
     int32_t outputCount = topology [topology.size() - 1];
-
     neurons[topology.size() - 1] = std::vector<float>(outputCount);
 }
 
@@ -92,7 +89,8 @@ NeuralNetwork* NeuralNetwork::ReadFromFile(char *path) {
     }
 
     // Allocate space for weights.
-    std::vector<std::vector<std::vector<float>>> weights = AllocWeights(topology);
+    std::vector<std::vector<std::vector<float>>> weights;
+    AllocWeights(topology, weights);
     
     // Read all weights
     for (int32_t i = 0; i < nnLayerCount - 1; i++) { // Current layer
@@ -129,7 +127,6 @@ void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
     }
 
 
-
     // Write all weights
     for (int32_t i = 0; i < nn.weights.size(); i++) { // Current layer
         for (int32_t j = 0; j < nn.weights[i].size(); j++) { // Current layer, current neuron
@@ -148,21 +145,21 @@ void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
 
 // Note: to get output length, just get NeuralNetwork's topology[layerCount - 1]!
 std::vector<float> NeuralNetwork::FeedForward(std::vector<float> input) {
-    // Pass inputs through NN.
+    // Pass inputs to NN input layer.
+    for (int32_t i = 0; i < topology[0]; i++) {
+        neurons[0][i] = input[i];
+    }
+
+    // Propagate input through NN.
     for (int32_t i = 0; i < weights.size(); i++) { // Current layer
         for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
             for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
-                neurons[i][k] += weights[i][j][k] * neurons[i][j];
+                neurons[i + 1][k] += neurons[i][j] * weights[i][j][k];
             }
         }
     }
 
-    // Copy last layer's vals. to output.
-    for (int32_t i = 0; i < topology[topology.size() - 1]; i++) {
-        output[i] = neurons[topology.size()][i];
-    }
-
-    return output;
+    return neurons[topology.size() - 1];
 }
 
 void NeuralNetwork::Mutate() {
@@ -178,23 +175,16 @@ void NeuralNetwork::Mutate() {
 // Helper functions:
 
 // Allocates weights given a topology.
-std::vector<std::vector<std::vector<float>>> NeuralNetwork::AllocWeights (std::vector<int32_t> topology) {
-
-
-    // TODO: optimize by only RESERVING space for weights. Don't create vectors with a size, b/c that wastes a lot of cycles.
-
-
-    std::vector<std::vector<std::vector<float>>> weights = std::vector <std::vector<std::vector<float>>> (topology.size() - 1);
+void NeuralNetwork::AllocWeights (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> &weights) {
+    weights.resize(topology.size() - 1); // Use resize instead of reserve b/c reserve doesn't really allocate array space.
 
     for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
-        weights[i] = std::vector <std::vector<float>>(topology[i]);
+        weights[i].resize ((topology[i]));
 
         for (int32_t j = 0; j < topology[i]; j++) { // Current layer, current neuron
-            weights[i][j] = std::vector<float>(topology[i + 1]);
+            weights[i][j].resize (topology[i + 1]);
         }
     }
-
-    return weights;
 }
 
 // Returns a mutated version of the given weight value
