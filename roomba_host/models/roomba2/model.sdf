@@ -40,17 +40,17 @@
       </box>
     </geometry>
 	<material>
-	    <!--red (RGB = 176,22,4)
+	    <!--red (RGB = 176,22,4)-->
 	    <diffuse>0.6875 0.0859 0.015625 1</diffuse>
 	    <specular>0.6875 0.0859 0.015625 1</specular>
 	    <ambient>0.6875 0.0859 0.015625 1</ambient>
-	    emissive>176 22 4 1</emissive-->
+	    <emissive>176 22 4 1</emissive>
 
-	    <!--green (RGB = 22,86,16)-->
+	    <!--green (RGB = 22,86,16)
 	    <diffuse>0.0859375 0.3359375 0.0625 1</diffuse>
 	    <specular>.0859375 0.3359375 0.0625 1</specular>
 	    <ambient>.0859375 0.3359375 0.0625 1</ambient>
-	    <emissive>.0859375 0.3359375 0.0625 1</emissive>
+	    <emissive>.0859375 0.3359375 0.0625 1</emissive-->
 	</material>
   </visual>
 

@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <vector>
 class NeuralNetwork {
-/* Things this class needs:
+/* Things this class has:
  * Neurons
  * Weights
  * Propogation function
@@ -17,8 +17,6 @@ class NeuralNetwork {
  * Random creation function
  * File IO (saving and loading NNs)
 */
-
-// TODO: Random creation function, file IO.
 
     // Weight stuff.
     const float minInitWeight = -1;
@@ -44,9 +42,7 @@ class NeuralNetwork {
     // 3. Current weight
     std::vector<std::vector<std::vector<float>>> weights;
 
-    // Current output.
-    std::vector<float> output; // TODO: Init. output: float output[topology[layerCount - 1]];
-
+public:
     // Creates a NN w/ the given topology and random weights.
     NeuralNetwork (std::vector<int32_t> topology);
 
@@ -59,7 +55,7 @@ class NeuralNetwork {
     NeuralNetwork DeepCopy (NeuralNetwork nnToCopy);
 
     // Reads NN from file at path.
-    static NeuralNetwork ReadFromFile (char path[]);
+    static NeuralNetwork* ReadFromFile (char path[]);
 
     // Writes the given NN to the file at path.
     static void WriteToFile (NeuralNetwork nn, char path[]);
@@ -70,6 +66,11 @@ class NeuralNetwork {
 
     // Mutates this NN.
     void Mutate();
+
+// Helper functions:
+private:
+    // Allocates weights given a topology.
+    static void AllocWeights (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> &weights);
 
     // Mutates the given weight if it should be mutated, returns new weight.
     static float MutateWeight(float weight);
@@ -86,6 +87,11 @@ class NeuralNetwork {
     static void WriteCharsToFile (char* chars, uint32_t length, FILE* fileStream);
 
     static void ReadCharsFromFile (char* chars, uint32_t length, FILE* fileStream);
+
+// Debugging stuff:
+public:
+    // Prints this NN's weights.
+    void PrintWeights();
 };
 
 #endif //LEANNNS_NEURALNETWORK_H

@@ -9,18 +9,13 @@
 #include "AIAgent.h"
 
 class GeneticAlgorithm {
-    /* Things to add:
-     * Vector sorting based on score
-     * Adaptation function
-     */
+public:
+    // Keeps good NNs, and gets rid of bad NNs.
+    static void AdaptPopulation(std::vector<AIAgent>& population);
 
-    std::vector<AIAgent> population;
-
-    // Keeps good NNs, gets rid of bad NNs.
-    void AdaptPopulation();
-
-    // Sorts AI Agents.
-    void SortAgents ();
+private:
+    // Sorts AI Agents in score-descending order.
+    static void SortAgents (std::vector<AIAgent>& population);
 };
 
 

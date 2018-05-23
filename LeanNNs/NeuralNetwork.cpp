@@ -9,18 +9,18 @@
 
 NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
     this->topology = topology;
-    // Create neurons vector, output vector
-    neurons = std::vector <std::vector<float>> (topology.size());
-    weights = std::vector <std::vector<std::vector<float>>> (topology.size());
 
-    // Initialize neurons, weights, and output vectors.
+    // Allocate neurons vector:
+    neurons.resize(topology.size());
+
+    // Allocate weights.
+    NeuralNetwork::AllocWeights(topology, weights);
+
+    // Initialize neurons vector:
     for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
         neurons[i] = std::vector <float>(topology[i]);
-        weights[i] = std::vector <std::vector<float>>(topology[i]);
 
         for (int32_t j = 0; j < topology[i]; j++) { // Current layer, current neuron
-            weights[i][j] = std::vector<float>(topology[i + 1]);
-
             for (int32_t k = 0; k < topology[i+1]; k++) { // Next layer, current neuron
                 weights[i][j][k] = RandRange (minInitWeight, maxInitWeight);
             }
@@ -28,7 +28,6 @@ NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology) {
     }
 
     int32_t outputCount = topology [topology.size() - 1];
-
     neurons[topology.size() - 1] = std::vector<float>(outputCount);
 }
 
@@ -37,13 +36,13 @@ NeuralNetwork::NeuralNetwork(std::vector<int32_t> topology, std::vector<std::vec
     this->topology = topology;
     this->weights = weights;
 
-    // Initialize neurons, output.
+    // Resize neurons before assigning stuff to them!
+    neurons.resize(topology.size());
     for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
         neurons[i] = std::vector <float>(topology[i]);
     }
 
     int32_t outputCount = topology [topology.size() - 1];
-
     neurons[topology.size() - 1] = std::vector<float>(outputCount);
 }
 
@@ -69,7 +68,7 @@ NeuralNetwork NeuralNetwork::DeepCopy(NeuralNetwork nnToCopy) {
     return NeuralNetwork (topology, weights);
 }
 
-NeuralNetwork NeuralNetwork::ReadFromFile(char *path) {
+NeuralNetwork* NeuralNetwork::ReadFromFile(char *path) {
     // fopen at path
     FILE* nnFile = fopen (path, "r");
 
@@ -80,21 +79,21 @@ NeuralNetwork NeuralNetwork::ReadFromFile(char *path) {
     ReadCharsFromFile (temp, 4, nnFile);
     uint32_t nnLayerCount = (uint32_t) *temp;
     memcpy(&temp, &(nnLayerCount), 4); // temp has topology length now. 4 bytes for a uint32_t.
-    WriteCharsToFile(temp, 4, nnFile);
 
-    std::vector<int32_t> topology;
-    topology.reserve(nnLayerCount);
+    std::vector<int32_t> topology (nnLayerCount);
 
     // Now read each layer's neuron count.
     for (uint32_t i = 0; i < nnLayerCount; i++) {
         ReadCharsFromFile(temp, 4, nnFile);
-        memcpy(&(topology[i]), &temp, 4);
+        memcpy(&(topology[i]), temp, 4);
     }
 
-    // Read all weights
+    // Allocate space for weights.
     std::vector<std::vector<std::vector<float>>> weights;
-
-    for (int32_t i = 0; i < nnLayerCount; i++) { // Current layer
+    AllocWeights(topology, weights);
+    
+    // Read all weights
+    for (int32_t i = 0; i < nnLayerCount - 1; i++) { // Current layer
         for (int32_t j = 0; j < topology[i]; j++) { // Current layer, current neuron
             for (int32_t k = 0; k < topology[i + 1]; k++) { // Next layer, current neuron
                 ReadCharsFromFile(temp, 4, nnFile);
@@ -107,7 +106,7 @@ NeuralNetwork NeuralNetwork::ReadFromFile(char *path) {
     fclose(nnFile);
 
     // Return new NN w/ given topology and weights.
-    return NeuralNetwork (topology, weights);
+    return new NeuralNetwork (topology, weights);
 }
 
 void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
@@ -128,7 +127,6 @@ void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
     }
 
 
-
     // Write all weights
     for (int32_t i = 0; i < nn.weights.size(); i++) { // Current layer
         for (int32_t j = 0; j < nn.weights[i].size(); j++) { // Current layer, current neuron
@@ -147,21 +145,21 @@ void NeuralNetwork::WriteToFile(NeuralNetwork nn, char *path) {
 
 // Note: to get output length, just get NeuralNetwork's topology[layerCount - 1]!
 std::vector<float> NeuralNetwork::FeedForward(std::vector<float> input) {
-    // Pass inputs through NN.
+    // Pass inputs to NN input layer.
+    for (int32_t i = 0; i < topology[0]; i++) {
+        neurons[0][i] = input[i];
+    }
+
+    // Propagate input through NN.
     for (int32_t i = 0; i < weights.size(); i++) { // Current layer
         for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
             for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
-                neurons[i][k] += weights[i][j][k] * neurons[i][j];
+                neurons[i + 1][k] += neurons[i][j] * weights[i][j][k];
             }
         }
     }
 
-    // Copy last layer's vals. to output.
-    for (int32_t i = 0; i < topology[topology.size() - 1]; i++) {
-        output[i] = neurons[topology.size()][i];
-    }
-
-    return output;
+    return neurons[topology.size() - 1];
 }
 
 void NeuralNetwork::Mutate() {
@@ -170,6 +168,21 @@ void NeuralNetwork::Mutate() {
             for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
                 weights[i][j][k] = MutateWeight(weights[i][j][k]);
             }
+        }
+    }
+}
+
+// Helper functions:
+
+// Allocates weights given a topology.
+void NeuralNetwork::AllocWeights (std::vector<int32_t> topology, std::vector<std::vector<std::vector<float>>> &weights) {
+    weights.resize(topology.size() - 1); // Use resize instead of reserve b/c reserve doesn't really allocate array space.
+
+    for (int32_t i = 0; i < topology.size() - 1; i++) { // Current layer
+        weights[i].resize ((topology[i]));
+
+        for (int32_t j = 0; j < topology[i]; j++) { // Current layer, current neuron
+            weights[i][j].resize (topology[i + 1]);
         }
     }
 }
@@ -205,5 +218,15 @@ void NeuralNetwork::WriteCharsToFile(char *chars, uint32_t length, FILE *fileStr
 void NeuralNetwork::ReadCharsFromFile(char* chars, uint32_t length, FILE *fileStream) {
     for (uint32_t i = 0; i < length; i++) {
         chars[i] = fgetc(fileStream);
+    }
+}
+
+void NeuralNetwork::PrintWeights() {
+    for (uint32_t i = 0; i < weights.size(); i++) {
+        for (int32_t j = 0; j < weights[i].size(); j++) { // Current layer, current neuron
+            for (int32_t k = 0; k < weights[i][j].size(); k++) { // Next layer, current neuron
+                printf("%g\n", weights[i][j][k]);
+            }
+        }
     }
 }
