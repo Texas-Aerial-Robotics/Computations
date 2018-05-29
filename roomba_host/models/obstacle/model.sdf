@@ -40,6 +40,15 @@
           </cylinder>
         </geometry>
       </visual>
+      <collision name="obstacle_collision">
+        <pose>0 0 1 0 0 0</pose>
+	<geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>2.0</length>
+          </cylinder>
+        </geometry>
+      </collision>
 
       <collision name="front_wheel_collision">
         <pose>0.130000 0 0.017000 0 1.570700 1.570700</pose>
