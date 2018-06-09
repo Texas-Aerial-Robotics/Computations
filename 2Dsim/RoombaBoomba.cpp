@@ -3,8 +3,12 @@
 #include <cmath>
 #include <vector>
 #include "matplotlibcpp.h"
+#include <string>
+#include <map>
 
 using namespace std;
+
+std::vector<double> roombax, obstaclex, roombay, obstacley;
 
 class TargetRoomba
 {
@@ -245,6 +249,19 @@ int main()
 			r.setTheta(r.getTheta()+.066);
 		}
 		cout<<"t = "<<t<<" r1 ("<<roombas[0].getx()<<","<<roombas[0].gety()<<") r2 ("<<roombas[1].getx()<<","<<roombas[1].gety()<<")"<<endl;
+
+		for (int i = 0; i < 10; ++i)
+		{
+			roombax.push_back(roombas[i].getx());
+			roombay.push_back(roombas[i].gety());
+		}
+
+		for (int i = 0; i < 4; ++i)
+		{
+			obstaclex.push_back(obstacles[i].getx());
+			obstacley.push_back(obstacles[i].gety());
+		}
+
 		for(TargetRoomba &r : roombas)
 		{
 			r.move();
@@ -253,5 +270,37 @@ int main()
 		{
 			r.move();
 		}
+	}
+
+	matplotlibcpp::xlim(-10, 10);
+	matplotlibcpp::ylim(-10, 10);
+	double alpha = 1;
+
+	std::map<std::string, std::string> obstacleKeywords;
+	obstacleKeywords["color"] = "blue";
+	obstacleKeywords["marker"] = "o";
+	obstacleKeywords["linestyle"] = "none";
+
+	std::map<std::string, std::string> roombaKeywords;
+	roombaKeywords["color"] = "red";
+	roombaKeywords["marker"] = "o";
+	roombaKeywords["linestyle"] = "none";
+
+	std::vector<double> stagingx(1);
+	std::vector<double> stagingy(1);
+	for (int i = roombax.size(); i > 0; --i)
+	{
+		if ((i % 10 == 0) && alpha > 0)
+		{
+			alpha -= 0.002;
+		}
+		stagingx[0] = roombax[i];
+		stagingy[0] = roombay[i];
+		matplotlibcpp::plot(stagingx, stagingy, roombaKeywords, alpha);
+	}
+	matplotlibcpp::plot(obstaclex, obstacley, obstacleKeywords, 0.2);
+	matplotlibcpp::draw();
+	while(1) {
+		matplotlibcpp::pause(0.001);
 	}
 };
