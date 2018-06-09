@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <cmath>
 #include <vector>
+#include "matplotlibcpp.h"
+
 using namespace std;
 
 class TargetRoomba
@@ -73,7 +75,7 @@ public:
 };
 
 class ObstacleRoomba
-{ 
+{
 private:
 	double speed = .33;
 	double theta;
@@ -212,80 +214,32 @@ int main()
 
 					if(seperationMagnitude <= 0.35)
 					{
-						if (seperationAngle <= (obstacles[j].getTheta + 90) && seperationAngle >= (obstacles[j].getTheta-90))
+						if (seperationAngle <= (obstacles[j].getTheta() + 90) && seperationAngle >= (obstacles[j].getTheta()-90))
 						{
 							flip = false;
 						}
-						else if (obstacles[j].getTheta >= -90 && obstacles[j].getTheta <= 0)
+						else if (obstacles[j].getTheta() >= -90 && obstacles[j].getTheta() <= 0)
 						{
-							if (seperationAngle >= obstacles[j].getTheta - 90 || seperationAngle <= obstacles[j].getTheta + 90)
+							if (seperationAngle >= obstacles[j].getTheta() - 90 || seperationAngle <= obstacles[j].getTheta() + 90)
 							{
 								flip = true;
 							}
 						}
-						else if (obstacles[j].getTheta <= 90 && obstacles[j].getTheta >= 0)
+						else if (obstacles[j].getTheta() <= 90 && obstacles[j].getTheta() >= 0)
 						{
-							if (seperationAngle <= obstacles[j].getTheta+90 || seperationAngle >= obstacles[j].getTheta - 90)
+							if (seperationAngle <= obstacles[j].getTheta()+90 || seperationAngle >= obstacles[j].getTheta() - 90)
 							{
 								flip = true;
 							}
 						}
-						else if (obstacles[j].getTheta + 90 <= seperationAngle && obstacles[j].getTheta - 90 >= seperationAngle)
+						else if (obstacles[j].getTheta() + 90 <= seperationAngle && obstacles[j].getTheta() - 90 >= seperationAngle)
 						{
 							flip = true;
 						}
-
-
-						//test section
-
-		/*if{
-			(sqrt((roombas[i].getx() - roombas[i+1].getx())^2 + (roombas[i].gety()-roombas[i+1].gety())^2) <= .35)
-			vecAngle = atan((roombas[i].gety()-roombas[i+1].gety())/(roombas[i].getx() - roombas[i+1].getx()));
-			if (vecAngle <= roombas[i].getTheta() + M_PI_2 && vecAngle >= roombas[i].getTheta() - M_PI_2){
-				//flip roomba
+					}
+				}
 			}
 		}
-
-					}
-					if(abs(ySeperation)<=.35&&abs(xSeperation)<=.35)
-						collision = true;
-					bool xdir = roombas[i].getxRight();
-					bool ydir = roombas[i].getyUp();
-					if(collision)
-					{
-						if(xdir && ydir && xSeperation > 0.0 && ySeperation > 0.0)
-							flip = true;
-						if(xdir && !ydir && xSeperation > 0.0 && ySeperation < 0.0)
-							flip = true;
-						if(!xdir && ydir && xSeperation < 0.0 && ySeperation > 0.0)
-							flip = true;
-						if(!xdir && !ydir && xSeperation < 0.0 && ySeperation < 0.0)
-							flip = true;
-					}
-				}
-				if(i == j)
-					continue;
-				double xSeperation = roombas[j].getx() - roombas[i].getx();
-				double ySeperation = roombas[j].gety() - roombas[i].getx();
-				if(abs(ySeperation)<=.35&&abs(xSeperation)<=.35)
-					collision = true;
-				bool xdir = roombas[i].getxRight();
-				bool ydir = roombas[i].getyUp();
-				if(collision)
-				{
-					if(xdir && ydir && xSeperation > 0.0 && ySeperation > 0.0)
-						flip = true;
-					if(xdir && !ydir && xSeperation > 0.0 && ySeperation < 0.0)
-						flip = true;
-					if(!xdir && ydir && xSeperation < 0.0 && ySeperation > 0.0)
-						flip = true;
-					if(!xdir && !ydir && xSeperation < 0.0 && ySeperation < 0.0)
-						flip = true;
-				}
-			}
-			if(flip)
-				roombas[i].setTheta(roombas[i].getTheta()+ 2*M_PI);
-		}*/
 		for(ObstacleRoomba &r : obstacles)
 		{
 			r.setTheta(r.getTheta()+.066);
