@@ -1,5 +1,7 @@
 #include "matplotlibcpp.h"
 #include <cmath>
+#include <map>
+#include <string>
 
 std::vector<double> x, y;
 
@@ -10,21 +12,25 @@ int main() {
 	plt::ion(); // Make interactive
 	plt::ylim(-10,10); // Set y limits
 	plt::xlim(-10,10); // Set x limits
-	plt::plot(x, y, "ro"); // Plot "x, y" as "red and dashed"
+	std::map<std::string, std::string> keywords;
+	keywords["color"] = "red";
+	keywords["marker"] = "o";
+	keywords["linestyle"] = "none";
+	plt::plot(x, y, keywords, 1); // Plot "x, y" as "red and dashed"
 	plt::pause(1); // Just needs to be larger than 0.0001
 	x.push_back(2);
 	y.push_back(4);
-	plt::plot(x, y, "ro");
+	plt::plot(x, y, keywords, 0.8);
 	plt::pause(1);
 	plt::draw();
 	x.push_back(3);
 	y.push_back(2);
-	plt::plot(x, y, "ro");
+	plt::plot(x, y, keywords, 0.6);
 	plt::pause(1);
 	plt::draw();
 	x.push_back(2);
 	y.push_back(2.5);
-	plt::plot(x, y, "ro");
+	plt::plot(x, y, keywords, .1);
 	plt::pause(1);
 	plt::draw();
 }
