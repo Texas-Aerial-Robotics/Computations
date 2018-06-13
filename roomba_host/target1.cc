@@ -30,7 +30,7 @@ namespace gazebo
 		// this needs to be modeled correctly	
   		//set starting location of roombah
   		key = anim->CreateKeyFrame(0);
-        	key->Translation(ignition::math::Vector3d(-1, 0, 0));
+        	key->Translation(ignition::math::Vector3d(-.5, 0, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
         	
         	// set waypoint location after 2 seconds
@@ -55,7 +55,7 @@ namespace gazebo
 	//set final location equal to starting location
 
         	key = anim->CreateKeyFrame(40.0);
-        	key->Translation(ignition::math::Vector3d(-1,0, 0));
+        	key->Translation(ignition::math::Vector3d(-.5,0, 0));
         	key->Rotation(ignition::math::Quaterniond(0, 0, 0));
         	
         	

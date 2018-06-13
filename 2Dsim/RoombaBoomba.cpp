@@ -184,14 +184,14 @@ int main()
 
 	for(int t = 0; t < 600; t++)
 	{
-		if(t%20 == 0 && t != 0)
+		if(t%20 == 0 && t != 0) //rotate 180 every 20 seconds
 		{
 			for(TargetRoomba &r : roombas)
 			{
 				r.setTheta(r.getTheta()+M_PI);
 			}
 		}
-		else if(t%5 == 0 && t != 0)
+		else if(t%5 == 0 && t != 0) //add random trajectory every 5 seconds
 		{
 			for(TargetRoomba &r : roombas)
 			{
@@ -207,48 +207,60 @@ int main()
 		{
 			bool collision = false;
 			bool flip = false;
-			for(int j = 0; j<10; j++)
-			{
-				if(j<5)
-				{
+			for(int j = 0; j<5; j++)
+			{		flip=false;
 					double xSeperation = obstacles[j].getx() - roombas[i].getx();
 					double ySeperation = obstacles[j].gety() - roombas[i].getx();
 					double seperationMagnitude = sqrt(pow(xSeperation, 2.0)+ pow(ySeperation, 2.0));
-					double seperationAngle = asin(ySeperation / seperationMagnitude);
+					double seperationAngle = atan2(ySeperation,xSeperation);
 
 					if(seperationMagnitude <= 0.35)
 					{
-						if (seperationAngle <= (obstacles[j].getTheta() + 90) && seperationAngle >= (obstacles[j].getTheta()-90))
-						{
-							flip = false;
-						}
-						else if (obstacles[j].getTheta() >= -90 && obstacles[j].getTheta() <= 0)
-						{
-							if (seperationAngle >= obstacles[j].getTheta() - 90 || seperationAngle <= obstacles[j].getTheta() + 90)
-							{
-								flip = true;
+					// {
+					// 	if (seperationAngle <= (obstacles[j].getTheta() + 90) && seperationAngle >= (obstacles[j].getTheta()-90))
+					// 	{	cout<<"GAY"<<endl;
+					// 		flip = false;
+					// 	}
+					// 	else if (obstacles[j].getTheta() >= -90 && obstacles[j].getTheta() <= 0)
+					// 	{
+					// 		if (seperationAngle >= obstacles[j].getTheta() - 90 || seperationAngle <= obstacles[j].getTheta() + 90)
+					// 		{	cout<<"GAY"<<endl;
+					// 			flip = true;
+					// 		}
+					// 	}
+					// 	else if (obstacles[j].getTheta() <= 90 && obstacles[j].getTheta() >= 0)
+					// 	{
+					// 		if (seperationAngle <= obstacles[j].getTheta()+90 || seperationAngle >= obstacles[j].getTheta() - 90)
+					// 		{	cout<<"TRUEE"<<endl;
+					// 			flip = true;
+					// 		}
+					// 	}
+					// 	else if (obstacles[j].getTheta() + 90 <= seperationAngle && obstacles[j].getTheta() - 90 >= seperationAngle)
+					// 	{	
+					// 		cout<<"TRUEEE"<<endl;
+					// 		flip = true;
+					// 	}
+					// }
+						if (seperationAngle <= (roombas[i].getTheta()+M_PI/4) && seperationAngle>= (roombas[i].getTheta()-M_PI/4)){
+
+								flip=true;
+
 							}
-						}
-						else if (obstacles[j].getTheta() <= 90 && obstacles[j].getTheta() >= 0)
-						{
-							if (seperationAngle <= obstacles[j].getTheta()+90 || seperationAngle >= obstacles[j].getTheta() - 90)
-							{
-								flip = true;
-							}
-						}
-						else if (obstacles[j].getTheta() + 90 <= seperationAngle && obstacles[j].getTheta() - 90 >= seperationAngle)
-						{
-							flip = true;
-						}
+
+
 					}
-				}
+				if(flip){
+							roombas[i].setTheta(roombas[i].getTheta()+M_PI)	;
+							cout<<"COLIDETH"<<endl;				
+				}	
+				
 			}
 		}
 		for(ObstacleRoomba &r : obstacles)
 		{
 			r.setTheta(r.getTheta()+.066);
 		}
-		cout<<"t = "<<t<<" r1 ("<<roombas[0].getx()<<","<<roombas[0].gety()<<") r2 ("<<roombas[1].getx()<<","<<roombas[1].gety()<<")"<<endl;
+		//cout<<"t = "<<t<<" r1 ("<<roombas[0].getx()<<","<<roombas[0].gety()<<") r2 ("<<roombas[1].getx()<<","<<roombas[1].gety()<<")"<<endl;
 
 		for (int i = 0; i < 10; ++i)
 		{
